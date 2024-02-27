@@ -2,32 +2,77 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
-</main>
+    <section class="bg-home bg-success" id="home">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="home-content text-center mb-4">
+                        <h1 class="home-title mb-2 text-white">Sănătatea la un clic distanță: <br>Diagnosticare și Informare în Era Digitală! </h1>
+                        <p class="text-white-50 home-desc mb-4">Cu algoritmi avansați de diagnosticare și integrare cu baze de date medicale de ultimă generație, PIDI-Med (Platforma de Diagnosticare și Informare Medicală) transformă procesul de înțelegere a simptomelor într-o experiență simplă și eficientă. Introdu simptomele tale, iar într-un clic, primești recomandări personalizate de la medici specializați.</p>
+                        <div>
+                            <a href="#" class="mr-1 search-button"> <i class="fa-solid fa-magnifying-glass mr-1"></i> Introduceti simptome</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="home-img">
+                        <img src="../../Images/indexpic.png" alt="" width="450" class="img-fluid mx-auto d-block">
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container-fluid -->
+    </section>
+    <!-- home end -->
+    <!-- services start -->
+    <section class="section" id="services">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="title text-center my-4">
+                        <h3 class="mb-3">Avantajele utilizării serviciilor pe care le oferim</h3>
+                        <p class="text-muted">text</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="services-box text-center mt-3 p-3">
+                        <div class="services-icon mb-3">
+                            <i class="pe-7s-display1 h2 mt-1"></i>
+                        </div>
+                        <h4>Diagnosticare Personalizată</h4>
+                        <p class="text-muted">Selectați-vă simptomele și noi vă vom oferi cel mai optim tratament</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="services-box text-center mt-3 p-3">
+                        <div class="services-icon mb-3">
+                            <i class="pe-7s-science h2 mt-0"></i>
+                        </div>
+                        <h4>Bază de Date Extinsă</h4>
+                        <p class="text-muted">Beneficiați de acces la o bază de date vastă și actualizată de informații medicale</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="services-box text-center mt-3 p-3">
+                        <div class="services-icon mb-3">
+                            <i class="pe-7s-phone h2 mt-0"></i>
+                        </div>
+                        <h4>Recomandări de medici</h4>
+                        <p class="text-muted">Primiți recomandări de medici pentru problemele dvs de sănătate</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container-fluid -->
+    </section>

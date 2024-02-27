@@ -13,11 +13,20 @@ namespace symptomSage
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "selectSymptoms",
+                url: "selectsymptoms",
+                defaults: new { controller="SymptomsController", action="select"}
+
+            ); ;
         }
     }
 }
