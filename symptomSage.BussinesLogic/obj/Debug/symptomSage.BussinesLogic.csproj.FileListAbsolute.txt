@@ -1,0 +1,11 @@
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\obj\Debug\symptomSage.BussinesLogic.csproj.AssemblyReference.cache
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\obj\Debug\symptomSage.BussinesLogic.csproj.CoreCompileInputs.cache
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.BussinesLogic.dll
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.BussinesLogic.pdb
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.Domain.dll
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.Helpers.dll
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.Domain.pdb
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\bin\Debug\symptomSage.Helpers.pdb
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\obj\Debug\symptomSage.BussinesLogic.csproj.CopyComplete
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\obj\Debug\symptomSage.BussinesLogic.dll
+C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.BussinesLogic\obj\Debug\symptomSage.BussinesLogic.pdb
