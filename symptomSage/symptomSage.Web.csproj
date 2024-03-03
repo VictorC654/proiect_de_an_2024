@@ -211,6 +211,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\symptomSage.BussinesLogic\symptomSage.BussinesLogic.csproj">
+      <Project>{96bd5c43-5346-4560-bea0-c7c7cabae1d5}</Project>
+      <Name>symptomSage.BussinesLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\symptomSage.Domain\symptomSage.Domain.csproj">
+      <Project>{8d7acd9c-3cf9-453e-8b7a-63b685cd57d5}</Project>
+      <Name>symptomSage.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
