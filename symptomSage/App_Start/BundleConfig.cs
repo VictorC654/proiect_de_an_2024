@@ -25,17 +25,20 @@ namespace symptomSage
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+
             bundles.Add(new StyleBundle("~/Content/templateCSS").Include(
-                "~/Content/templateCss/bootstrap.min.css",
                 "~/Content/templateCss/style.css",
-                "~/Content/templateCss/style.css.map"));
-            bundles.Add(new ScriptBundle("~/bundles/templateScripts").Include(
-                "~/Scripts/templateScripts/app.js",
-                "~/Scripts/templateScripts/bootstrap.bundle.min.js",
-                "~/Scripts/templateScripts/counter.init.js",
-                "~/Scripts/templateScripts/jquery.easing.min.js",
-                "~/Scripts/templateScripts/jquery.min.js",
-                "~/Scripts/templateScripts/scrollspy.min.js"));
+                "~/Content/templateCss/style.css.map",
+                "~/Content/templateCss/bootstrap.min.css"));
+            // bundles.Add(new ScriptBundle("~/bundles/templateScripts").Include(
+              //  "~/Scripts/templateScripts/app.js",
+              //  "~/Scripts/templateScripts/bootstrap.bundle.min.js",
+              //  "~/Scripts/templateScripts/counter.init.js",
+              //  "~/Scripts/templateScripts/jquery.easing.min.js",
+              //  "~/Scripts/templateScripts/jquery.min.js",
+              //  "~/Scripts/templateScripts/scrollspy.min.js"));
         }
     }
 }

@@ -1,17 +1,17 @@
-﻿using syptomSage.BussinesLogic.Interfaces;
+﻿using symptomSage.BussinesLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace syptomSage.BussinesLogic
+using symptomSage.BussinesLogic;
+namespace symptomSage.BussinesLogic
 {
     public class BussinesLogic
     {
-        public ISession GetSessionBL()
-        {
-            return new SessionBL();
+        public ISession GetSessionBl()
+        {   
+            return new SessionBl();
         }
     }
 }

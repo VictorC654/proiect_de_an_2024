@@ -24,9 +24,14 @@ namespace symptomSage
             routes.MapRoute(
                 name: "selectSymptoms",
                 url: "selectsymptoms",
-                defaults: new { controller="SymptomsController", action="select"}
-
-            ); ;
+                defaults: new { controller="SymptomsController", action="Select"}
+            );
+            
+            routes.MapRoute(
+                name: "authenticate",
+                url: "authenticate",
+                defaults: new { controller="LoginController", action="Index"}
+                );
         }
     }
 }

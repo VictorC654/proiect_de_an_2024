@@ -1,9 +1,0 @@
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\obj\Debug\symptomSage.Domain.csproj.AssemblyReference.cache
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\obj\Debug\symptomSage.Domain.csproj.CoreCompileInputs.cache
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\bin\Debug\symptomSage.Domain.dll
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\bin\Debug\symptomSage.Domain.pdb
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\bin\Debug\symptomSage.Helpers.dll
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\bin\Debug\symptomSage.Helpers.pdb
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\obj\Debug\symptomSage.Domain.csproj.CopyComplete
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\obj\Debug\symptomSage.Domain.dll
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Domain\obj\Debug\symptomSage.Domain.pdb

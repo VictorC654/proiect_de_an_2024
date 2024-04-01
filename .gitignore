@@ -1,0 +1,11 @@
+.idea
+.vs
+symptomSage.BussinesLogic/bin
+symptomSage.BussinesLogic/obj
+symptomSage.Domain/bin
+symptomSage.Domain/obj
+symptomSage.Helpers/obj
+symptomSage.Helpers/bin
+symptomSage/obj
+symptomSage/bin
+

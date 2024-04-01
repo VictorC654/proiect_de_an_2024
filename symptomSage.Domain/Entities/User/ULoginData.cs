@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace syptomSage.Domain.Entities.User
+namespace symptomSage.Domain.Entities.User
 {
     public class ULoginData
     {

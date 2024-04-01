@@ -1,6 +1,0 @@
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\bin\Debug\symptomSage.Helpers.dll
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\bin\Debug\symptomSage.Helpers.pdb
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\obj\Debug\symptomSage.Helpers.csproj.AssemblyReference.cache
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\obj\Debug\symptomSage.Helpers.csproj.CoreCompileInputs.cache
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\obj\Debug\symptomSage.Helpers.dll
-C:\Users\mariu\Desktop\proiect_de_an_2024\symptomSage.Helpers\obj\Debug\symptomSage.Helpers.pdb

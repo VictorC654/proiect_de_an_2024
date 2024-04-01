@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace syptomSage.BussinesLogic.Interfaces
+namespace symptomSage.BussinesLogic.Interfaces
 {
-    internal interface ISession
+    public interface ISession
     {
     }
 }

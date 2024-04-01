@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using symptomSage.Models;
 
 namespace symptomSage.Controllers
 {
@@ -10,9 +11,11 @@ namespace symptomSage.Controllers
     {
         // GET: Symptoms
         [Route("selectsymptoms")]
-        public ActionResult select()
+        public ActionResult Select()
         {
-            return View();
+            UserData u = new UserData();
+            u.Username = "Victor";
+            return View(u);
         }
     }
 }
