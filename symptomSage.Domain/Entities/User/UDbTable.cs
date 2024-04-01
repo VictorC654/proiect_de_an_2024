@@ -42,6 +42,6 @@ namespace symptomSage.Domain.Entities.User
         public string LastIp { get; set; }
         
         // Role [User or admin]
-        // public URole Level { get; set; }
+        public int Level { get; set; }
     }
 }

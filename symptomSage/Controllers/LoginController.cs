@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using symptomSage.BussinesLogic;
 using symptomSage.BussinesLogic.Interfaces;
 using symptomSage.Models;
 using symptomSage.Domain.Entities.User;
@@ -41,7 +42,7 @@ namespace symptomSage.Controllers
                 
                 var userLogin = _session.UserLogin(data);
                 
-                if (userLogin.status)
+                if (userLogin.Status)
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -54,9 +55,9 @@ namespace symptomSage.Controllers
             return View();
         }
 
-        internal ULoginResp UserLoginActivation(ULoginData data)
-        {
-            UDbTable user;
-        }
+        // internal ULoginResp UserLoginActivation(ULoginData data)
+        // {
+        //     UDbTable user;
+        // }
     }
 }
