@@ -19,8 +19,14 @@ namespace symptomSage.Controllers
         }
         
         // GET LOGIN PAGE
-        [Route("authenticate")]
-        public ActionResult Index()
+        [Route("login")]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
+        [Route("register")]
+        public ActionResult Register()
         {
             return View();
         }

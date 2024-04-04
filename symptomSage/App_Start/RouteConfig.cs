@@ -28,10 +28,15 @@ namespace symptomSage
             );
             
             routes.MapRoute(
-                name: "authenticate",
-                url: "authenticate",
-                defaults: new { controller="LoginController", action="Index"}
+                name: "login",
+                url: "login",
+                defaults: new { controller="LoginController", action="Login"}
                 );
+            routes.MapRoute(
+                name: "register",
+                url: "register",
+                defaults: new { controller="LoginController", action="Register"}
+            );
         }
     }
 }
