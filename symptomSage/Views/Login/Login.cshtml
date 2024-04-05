@@ -1,56 +1,60 @@
 ﻿@{
     Layout = "~/Views/Shared/_LoginRegisterLayout.cshtml";
 }
+@model symptomSage.Models.UserLogin
 <style>
-    .bItem {
-      background-size: cover;
-      background-position: center center;
+    html, body
+    {
+        height: 100%;
+        margin: 0;
+        background-attachment: fixed;
     }
-    
-    .bItem:after {
-      content: '';
-      position: relative;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, transparent 0%, black 100%);
+    body 
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;justify-content: center;
     }
 </style>
-        <div class="" style="display:flex;flex-direction: row;height:100vh;">
-            <div class="bg-light" style="display:flex;flex-direction:column;width:40%;height: 100%;">
-                <div style="justify-content: left;margin:4em 0 0 3em;">
-                    <div class="text-success" style="font-size:2em;font-weight: bold;">
-                        <i class="fa-regular fa-hospital mr-1 text-black"></i> symptomSage
+            <div class="mb-2 text-white fw-bold" style="font-weight:bold;font-size:2em;">
+                <i class="fa-regular fa-hospital mr-1 text-white"></i> symptomSage
+            </div>
+        <div class="pl-1 pr-1 bg-light" style="width:35em;height:25em;display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
+            <div style="font-size:1.3em;" class="text-dark "><i style="font-size:1.5em;" class="text-success mr-1 fa-solid fa-lock "></i>
+                Logare
+            </div>
+            <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU DATELE PENTRU A TE LOGA</div>
+            @Html.ValidationSummary(true)
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <form class="">
+                    <div class="form-group border-danger">
+                        @Html.TextBoxFor(m => m.Credential, new
+                            {
+                              placeholder = "example@mail.com",
+                              value = "",
+                              name = "username",
+                              id = "username",
+                              @class = "form-control"
+                            })
                     </div>
-                    <div class="text-bg-success" style="margin-top:-.4em;letter-spacing:.2em;">
-                        LOGARE
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Password, new
+                            {
+                              placeholder = "*********",
+                              type = "password",
+                              value = "",
+                              name = "password",
+                              id = "password",
+                              @class  = "form-control"
+                            })
                     </div>
-                </div>
-                <div style="max-width:50%;margin:4em 0 0 3em;">
-                    <form>
-                        <div class="form-group border-danger">
-                            <label for="exampleInputEmail1">Email </label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        @* <div class="form-group form-check"> *@
-                            @* <input type="checkbox" class="form-check-input" id="exampleCheck1"> *@
-                            @* <label class="form-check-label" for="exampleCheck1"></label> *@
-                        @* </div> *@
-                        <div class="form-group">
-                            <a class="text-success" href="@Url.Action("Register", "Login")">Nu ai cont? Inregistreaza-te aici.</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
-            <div class="bItem bg-success" style="width:60%;">
-                <div></div>
-                <img style="margin-top:10em;object-fit: cover;height: 30em;" src="../../Images/login-page.png" class="img-fluid mx-auto d-block"/>
-            </div>
-            </div>
+                    <div class="form-group">
+                        <a class="text-success" href="@Url.Action("Register", "Login")">Nu aveti cont? Inregistrati-va aici.</a>
+                    </div>
+                    <button style="border-radius:.5em" type="submit" class="btn btn-success">Login</button>
+                    <a style="border-radius:.5em" class="btn btn-warning" href="@Url.Action("Index", "Home")">Pagina principala</a>
+                </form>
+            }
+        </div>

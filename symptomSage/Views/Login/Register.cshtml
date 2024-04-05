@@ -12,11 +12,15 @@
     body 
     {
         display: flex;
+        flex-direction: column;
         align-items: center;justify-content: center;
     }
 </style>
+            <div class="mb-2 text-white fw-bold" style="font-weight:bold;font-size:2em;">
+                <i class="fa-regular fa-hospital mr-1 text-white"></i> symptomSage
+            </div>
         <div class="pl-1 pr-1 bg-light" style="width:35em;height:25em;display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
-            <div style="font-size:1.3em;" class="text-dark "><i style="font-size:1.5em;" class="text-success mr-2 fa-solid fa-lock "></i>
+            <div style="font-size:1.3em;" class="text-dark "><i style="font-size:1.5em;" class="text-success mr-1 fa-solid fa-lock "></i>
                 Creaza cont
             </div>
             <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU DATELE PENTRU A CREEA CONTUL</div>
@@ -49,7 +53,8 @@
                     <div class="form-group">
                         <a class="text-success" href="@Url.Action("Login", "Login")">Aveti deja cont? Logati-va aici.</a>
                     </div>
-                    <button type="submit" class="btn btn-success">Sign Up</button>
+                    <button style="border-radius:.5em" type="submit" class="btn btn-success">Sign Up</button>
+                    <a style="border-radius:.5em" class="btn btn-warning" href="@Url.Action("Index", "Home")">Pagina principala</a>
                 </form>
             }
         </div>
