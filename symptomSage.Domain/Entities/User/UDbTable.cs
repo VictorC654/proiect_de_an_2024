@@ -6,42 +6,36 @@ namespace symptomSage.Domain.Entities.User
 { 
     public class UDbTable
     {
-        // Id Setter
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        
         public int Id { get; set; }
-        
-        // Username validation
-        [Required]
+
+        [Required(ErrorMessage = "Enter Username")]
         [Display(Name = "Username")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Numele tau nu poate fi mai mare decat 30 de caractere.")]
-        
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Name cannot be longer that 20 characters.")]
         public string Username { get; set; }
-        
-        // Password validation
+
         [Required]
         [Display(Name = "Password")]
-        [StringLength(50, MinimumLength = 8, ErrorMessage = "Parola nu poate fi mai scurta decat 8 caractere")]
-        
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter that 8 characters.")]
         public string Password { get; set; }
 
-        // Email validation
         [Required]
-        [Display(Name = "Email address")]
+        [EmailAddress]
+        [Display(Name = "Email adress")]
         [StringLength(30)]
-
         public string Email { get; set; }
-        
-        // Time
-        [DataType(DataType.Date)]
-        public DateTime LastLogin { get; set; }
-        
-        // Ip
+
+        [DataType(DataType.DateTime)]
+        public Nullable<DateTime> LastLogin { get; set; }
+
         [StringLength(30)]
-        public string LastIp { get; set; }
-        
-        // Role [User or admin]
-        public int Level { get; set; }
+        public string LasIp { get; set; }
+
+        [Required]
+        public Nullable<int> Level { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public Nullable<DateTime> RegisterDate { get; set; }
     }
 }

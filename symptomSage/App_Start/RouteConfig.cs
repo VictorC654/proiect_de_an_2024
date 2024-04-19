@@ -35,7 +35,7 @@ namespace symptomSage
             routes.MapRoute(
                 name: "register",
                 url: "register",
-                defaults: new { controller="LoginController", action="Register"}
+                defaults: new { controller="RegisterController", action="Register"}
             );
         }
     }

@@ -25,12 +25,6 @@ namespace symptomSage.Controllers
             return View();
         }
         
-        [Route("register")]
-        public ActionResult Register()
-        {
-            return View();
-        }
-        
         // LOGIN
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -60,10 +54,6 @@ namespace symptomSage.Controllers
             }
             return View();
         }
-
-        // internal ULoginResp UserLoginActivation(ULoginData data)
-        // {
-        //     UDbTable user;
-        // }
+        
     }
 }
