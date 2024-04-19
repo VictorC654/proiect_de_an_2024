@@ -2,11 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using symptomSage.BussinesLogic.DBModel;
 using symptomSage.Domain.Entities.User;
 using symptomSage.Helpers;
 
-namespace eUseControl.BusinessLogic.Core
+namespace symptomSage.BussinesLogic.Core
 {
     public class UserApi
     {
@@ -32,7 +33,7 @@ namespace eUseControl.BusinessLogic.Core
 
             using (var todo = new UserContext())
             {
-                result.LastIp = data.LoginIp;
+                result.LasIp = data.LoginIP;
                 result.LastLogin = data.LoginDateTime;
                 result.Level = 1;
                 todo.Entry(result).State = EntityState.Modified;
@@ -172,7 +173,7 @@ namespace eUseControl.BusinessLogic.Core
                 Username = curentUser.Username,
                 Email = curentUser.Email,
                 LastLogin = curentUser.LastLogin,
-                LasIp = curentUser.LastIp
+                LasIp = curentUser.LasIp
             };
 
             return userminimal;

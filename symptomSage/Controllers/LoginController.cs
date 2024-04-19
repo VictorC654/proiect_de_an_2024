@@ -49,7 +49,7 @@ namespace symptomSage.Controllers
                 else
                 {
                     ModelState.AddModelError("", userLogin.StatusMsg);
-                    return View();
+                    // return View();
                 }
             }
             return View();
