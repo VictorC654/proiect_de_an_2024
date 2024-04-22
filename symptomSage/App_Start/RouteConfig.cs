@@ -20,23 +20,23 @@ namespace symptomSage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "selectSymptoms",
-                url: "selectsymptoms",
-                defaults: new { controller="SymptomsController", action="Select"}
-            );
-            
-            routes.MapRoute(
-                name: "login",
-                url: "login",
-                defaults: new { controller="LoginController", action="Login"}
-                );
-            routes.MapRoute(
-                name: "register",
-                url: "register",
-                defaults: new { controller="RegisterController", action="Register"}
-            );
+            //
+            // routes.MapRoute(
+            //     name: "selectSymptoms",
+            //     url: "selectsymptoms",
+            //     defaults: new { controller="SymptomsController", action="Select"}
+            // );
+            //
+            // routes.MapRoute(
+            //     name: "login",
+            //     url: "login",
+            //     defaults: new { controller="LoginController", action="Login"}
+            //     );
+            // routes.MapRoute(
+            //     name: "register",
+            //     url: "register",
+            //     defaults: new { controller="RegisterController", action="Register"}
+            // );
         }
     }
 }

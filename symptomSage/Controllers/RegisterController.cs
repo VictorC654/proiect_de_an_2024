@@ -32,20 +32,19 @@ namespace symptomSage.Controllers
                     Username = register.Username,
                     Email = register.Email,
                     Password = register.Password,
-                    
                 };
-                var userRegiser = _session.UserRegister(data);
-                if (userRegiser.Status)
+                var userRegister = _session.UserRegister(data);
+                if (userRegister.Status)
                 {
                     return RedirectToAction("Login", "Login");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userRegiser.StatusMsg);
+                    ModelState.AddModelError("", userRegister.StatusMsg);
                     return View("Register");
                 }
             }
-            return View("Register");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

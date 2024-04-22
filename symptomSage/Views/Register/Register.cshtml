@@ -67,10 +67,12 @@
                     <div class="form-group">
                         <a class="text-success" href="@Url.Action("Login", "Login")">Aveti deja cont? Logati-va aici.</a>
                     </div>
-                    @Html.TextBox("signup", "Register", new { @class = "btn btn-success", type = "submit" })
+                    @* @Html.TextBox("signup", "register", new { @class = "btn btn-success", type = "submit" }) *@
+                    <button type="submit" class="btn btn-secondary btn-lg">Register</button>
+                    
                     
                             @* <button style="border-radius:.5em" type="submit" class="btn btn-success">Sign Up</button> *@
-                    <a style="border-radius:.5em" class="btn btn-warning" href="@Url.Action("Index", "Home")">Pagina principala</a>
+                    @* <a style="border-radius:.5em" class="btn btn-warning" href="@Url.Action("Index", "Home")">Pagina principala</a> *@
                 </form>
             }
         </div>
