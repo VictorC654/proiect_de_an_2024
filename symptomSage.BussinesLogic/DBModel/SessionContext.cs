@@ -10,5 +10,6 @@ namespace symptomSage.BussinesLogic.DBModel
         }
 
         public virtual DbSet<Session> Sessions { get; set; }
+        
     }
 }

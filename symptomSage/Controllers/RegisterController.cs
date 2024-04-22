@@ -15,7 +15,7 @@ namespace symptomSage.Controllers
             _session = bl.GetSessionBl();
         }
 
-        [Route("register")]
+        // [Route("register")]
         public ActionResult Register()
         {
             return View();
@@ -23,6 +23,7 @@ namespace symptomSage.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(UserRegister register)
         {
             if (ModelState.IsValid)
