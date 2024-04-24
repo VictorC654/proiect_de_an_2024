@@ -1,23 +1,23 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@model symptomSage.Domain.Entities.User.UDbTable;
 
     <section class="bg-home bg-success" id="home">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="home-content text-center mb-4">
+                        
                         <h1 class="home-title mb-2 text-white">Sănătatea la un clic distanță: <br>Diagnosticare și Informare în Era Digitală! </h1>
                         <p class="text-white-50 home-desc mb-4">Cu algoritmi avansați de diagnosticare și integrare cu baze de date medicale de ultimă generație, PIDI-Med (Platforma de Diagnosticare și Informare Medicală) transformă procesul de înțelegere a simptomelor într-o experiență simplă și eficientă. Introdu simptomele tale, iar într-un clic, primești recomandări personalizate de la medici specializați.</p>
                         <div>
-                            <a href="#" class="mr-1 search-button"> <i class="fa-solid fa-magnifying-glass mr-1"></i> Introduceti simptome</a>
+                            <a href="#" class="mr-1 search-button"> <i class="fa-solid fa-magnifying-glass mr-1"></i>@Model.Username</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
-
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="home-img">

@@ -27,6 +27,7 @@ namespace symptomSage.Controllers
         
         // LOGIN
         [HttpPost]
+        [Route("login")]
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserLogin login)
         {

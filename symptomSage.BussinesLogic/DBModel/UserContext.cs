@@ -3,7 +3,7 @@ using symptomSage.Domain.Entities.User;
 
 namespace symptomSage.BussinesLogic.DBModel
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext
     {
         public void FixEfProviderServicesProblem()
         {

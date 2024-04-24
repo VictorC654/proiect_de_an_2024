@@ -2,7 +2,8 @@
 using symptomSage.BussinesLogic.Interfaces;
 using symptomSage.Domain.Entities.User;
 using System.Web;
-
+using symptomSage.Domain.Entities.Symptoms;
+using symptomSage.BussinesLogic.Core;
 
 namespace symptomSage.BussinesLogic
 {
@@ -23,6 +24,14 @@ namespace symptomSage.BussinesLogic
         public UserMinimal GetUserByCookie(string apiCookieValue)
         {
             return UserCookie(apiCookieValue);
+        }
+        public SymptomsListResp SymptomsList(bool isAdmin)
+        {
+            return SymptomsListAction(isAdmin);
+        }
+        public SymptomsDetailsResp SymptomDetails(int symptomId)
+        {
+            return SymptomsDetailsAction(symptomId);
         }
     }
 }

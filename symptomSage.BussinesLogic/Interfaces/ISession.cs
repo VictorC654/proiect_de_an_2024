@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using symptomSage.Domain.Entities.Symptoms;
 using symptomSage.Domain.Entities.User;
 
 namespace symptomSage.BussinesLogic.Interfaces
@@ -15,5 +16,8 @@ namespace symptomSage.BussinesLogic.Interfaces
 
             HttpCookie GenCookie(string loginCredential);
             UserMinimal GetUserByCookie(string apiCookieValue);
+
+            SymptomsListResp SymptomsList(bool isAdmin);
+            SymptomsDetailsResp SymptomDetails(int symptomId);
     }
 }

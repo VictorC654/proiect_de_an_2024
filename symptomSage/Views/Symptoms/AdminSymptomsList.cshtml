@@ -1,0 +1,34 @@
+﻿@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model symptomSage.Models.SymptomsData
+
+
+            @foreach (var symptom in ViewBag.symptomsList)
+            {
+              <div class="col-lg-12 col-md-12 mb-5">
+                <div class="blog-item">
+
+                  <div class="blog-item-content">
+                    <div class="blog-item-meta mb-3 mt-4">
+                      <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5 Comments</span>
+                      <span class="text-black text-capitalize mr-3">
+                        <i class="icofont-calendar mr-1"></i> @symptom.PublishDate
+                      </span>
+                      <span class="text-black text-capitalize mr-3">
+                        <i class="icofont-user mr-1"></i> @symptom.Author
+                      </span>
+                    </div>
+
+                    <h2 class="mt-3 mb-3">
+                      <a href="">@symptom.BlogName</a>
+                    </h2>
+
+
+                    <p class="mb-4">Status: @symptom.Status</p>
+
+                  </div>
+                </div>
+              </div>
+            }
