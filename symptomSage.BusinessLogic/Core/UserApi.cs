@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using symptomSage.BusinessLogic.DBModel;
 using symptomSage.Domain.Entities.User;
 using symptomSage.Helpers;
+using EntityState = System.Data.EntityState;
 
 namespace symptomSage.BusinessLogic.Core
 {
@@ -35,8 +37,8 @@ namespace symptomSage.BusinessLogic.Core
             {
                 result.LasIp = data.LoginIP;
                 result.LastLogin = data.LoginDateTime;
-                result.Level = 1;
-                todo.Entry(result).State = EntityState.Modified;
+                // result.Level = 0;
+                todo.Entry(result).State = (System.Data.Entity.EntityState)EntityState.Modified;
                 try
                 {
                     todo.SaveChanges();
@@ -71,7 +73,7 @@ namespace symptomSage.BusinessLogic.Core
                 Username = data.Username,
                 Password = pass,
                 Email = data.Email,
-                Level = 1,
+                Level = Domain.Enums.URole.User,
                 RegisterDate = DateTime.Now,
             };
             int result;
@@ -122,7 +124,7 @@ namespace symptomSage.BusinessLogic.Core
                     curent.ExpireTime = DateTime.Now.AddMinutes(60);
                     using (var todo = new SessionContext())
                     {
-                        todo.Entry(curent).State = EntityState.Modified;
+                        todo.Entry(curent).State = (System.Data.Entity.EntityState)EntityState.Modified;
                         todo.SaveChanges();
                     }
                 }
@@ -144,7 +146,7 @@ namespace symptomSage.BusinessLogic.Core
         internal UserMinimal UserCookie(string cookie)
         {
             Session session;
-            UDbTable curentUser;
+            UDbTable currentUser;
 
             using (var db = new SessionContext())
             {
@@ -157,26 +159,27 @@ namespace symptomSage.BusinessLogic.Core
                 var validate = new EmailAddressAttribute();
                 if (validate.IsValid(session.Username))
                 {
-                    curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
+                    currentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
                 }
                 else
                 {
-                    curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+                    currentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
                 }
             }
 
-            if (curentUser == null) return null;
+            if (currentUser == null) return null;
             
-            var userminimal = new UserMinimal
+            var userMinimal = new UserMinimal
             {
-                Id = curentUser.Id,
-                Username = curentUser.Username,
-                Email = curentUser.Email,
-                LastLogin = curentUser.LastLogin,
-                LasIp = curentUser.LasIp
+                Id = currentUser.Id,
+                Username = currentUser.Username,
+                Email = currentUser.Email,
+                LastLogin = currentUser.LastLogin,
+                LasIp = currentUser.LasIp,
+                Level = currentUser.Level,
             };
 
-            return userminimal;
+            return userMinimal;
         }
     }
 }

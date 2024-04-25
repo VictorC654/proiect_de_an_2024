@@ -1,5 +1,4 @@
 ﻿
-@model symptomSage.Models.UserData
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +19,7 @@
         @RenderSection("Styles", required: false)
     }
     <link href="~/website2.ico" rel="shortcut icon" type="image/x-icon" />
-    <script src="https://kit.fontawesome.com/653369ca55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b39e74830d.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -46,12 +45,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("select", "Symptoms")"><i class="fa-solid fa-arrow-pointer mr-1"></i>Selecteaza simptome</a>
                         </li>
-                        {
-                            
-                        }
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Login", "Login")">
-                                @Html.TextBox("Name", User.Identity.Name)
                                 <i class="fa-solid fa-user mr-1"></i>Login
                             </a>
                         </li>

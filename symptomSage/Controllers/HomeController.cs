@@ -8,18 +8,12 @@ using symptomSage.Domain.Entities.User;
 using symptomSage.BusinessLogic.DBModel;
 namespace symptomSage.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public readonly UserContext _userContext;
-        public HomeController()
-        {
-        }
         public ActionResult Index()
-        {   
-            // var userId = (int)Session["Id"];
-            var user = _userContext.Users.Find(1);
-            
-            return View(user);
+        {
+            SessionStatus();
+            return View();
         }
 
         public ActionResult About()

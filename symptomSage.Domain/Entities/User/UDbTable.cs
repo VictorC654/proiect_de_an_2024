@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using symptomSage.Domain.Enums;
 
 namespace symptomSage.Domain.Entities.User
 { 
@@ -33,7 +34,7 @@ namespace symptomSage.Domain.Entities.User
         public string LasIp { get; set; }
 
         [Required]
-        public Nullable<int> Level { get; set; }
+        public URole Level { get; set; }
 
         [DataType(DataType.DateTime)]
         public Nullable<DateTime> RegisterDate { get; set; }

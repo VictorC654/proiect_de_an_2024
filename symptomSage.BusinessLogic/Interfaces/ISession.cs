@@ -17,6 +17,8 @@ namespace symptomSage.BusinessLogic.Interfaces
             HttpCookie GenCookie(string loginCredential);
             UserMinimal GetUserByCookie(string apiCookieValue);
 
+            SRegisterResp SymptomRegister(SRegisterData data);
+
             SymptomsListResp SymptomsList(bool isAdmin);
             SymptomsDetailsResp SymptomDetails(int symptomId);
     }

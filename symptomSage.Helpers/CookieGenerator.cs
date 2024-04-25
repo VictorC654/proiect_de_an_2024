@@ -5,7 +5,7 @@ using System.Text;
 
 namespace symptomSage.Helpers
 {
-    public class CookieGenerator
+    public static class CookieGenerator
     {
         private const string SaltData = "QADLz4qk3rVgBSGjDfAH3XWV" + "qKKagMXezBPv7TmXvwnXDDeR" + "pHaLBv4JnTGRwLg9tzbmV77g" + "8DUEAEa6JPv66hy7SwHBL4z4" + "FbGdh2MVs4kq9RcaZEAszuP5"
                                         + "ccLsEfqCpwdSvVVt479DCZrw" + "jSHrJVwaja9WQaWAmEY9NsPv" + "EHKnFwHTGAvPXpjpCxkbedYq" + "uEauLvZLphwmJLUteZ4QAXU6" + "Z4F3PDmh3wsQXvSctQBHvNWf";
@@ -151,4 +151,4 @@ namespace symptomSage.Helpers
             return buffer;
         }
     }
-    }
+}

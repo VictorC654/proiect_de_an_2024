@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginRegisterLayout.cshtml";
+}
+@model symptomSage.Models.SymptomRegister
+<style>
+    html, body
+    {
+        height: 100%;
+        margin: 0;
+        background-attachment: fixed;
+    }
+    body 
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;justify-content: center;
+    }
+</style>
+            <div class="mb-2 text-white fw-bold" style="font-weight:bold;font-size:2em;">
+                <i class="fa-regular fa-hospital mr-1 text-white"></i> symptomSage
+            </div>
+        <div class="pl-1 pr-1 bg-light" style="width:75em;height:35em;display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
+            <div style="font-weight:bold;font-size:1.3em;" class="text-dark ">
+                <i style="font-size:1.5em;" class="fa-solid fa-stethoscope mr-1 text-danger"></i>
+                Adauga un simptom
+            </div>
+            <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU NUMELE SI CATEGORIA</div>
+            @using (Html.BeginForm("RegisterSymptom", "Symptoms", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                    <div class="form-group border-danger">
+                        @Html.TextBoxFor(model => model.Name, new
+                        {
+                            placeholder = "Simptomul",
+                            value = "",
+                            name = "name",
+                            id = "name",
+                            @class = "form-control"
+                        })
+                        @Html.ValidationMessageFor(model => model.Name)
+                        @Html.TextBoxFor(model => model.Category, new { @class="form-control mt-1", name = "category", placeholder = "Categorie", id = "category" })
+                        @Html.ValidationMessageFor(model => model.Category)
+                    </div>
+                    @* <div class="form-group"> *@
+                    @*     <a class="text-success" href="@Url.Action("Login", "Login")">Aveti deja cont? Logati-va aici.</a> *@
+                    @* </div> *@
+                    <button style="border-radius:.5em" type="submit" class="btn btn-danger">Adauga simptom</button>
+                    
+                    
+                            @* <button style="border-radius:.5em" type="submit" class="btn btn-success">Sign Up</button> *@
+                    <a style="border-radius:.5em" class="btn btn-warning" href="@Url.Action("SAdminPanel", "Symptoms")">Admin Panel</a>
+            }
+        </div>

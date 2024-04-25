@@ -11,8 +11,9 @@ namespace symptomSage.Domain.Entities.Symptoms
         public int Id { get; set; }
 
         public string Name { get; set; }
+        
+        public string Category { get; set; }
 
-        public string Desc { get; set; }
 
         [DataType(DataType.DateTime)] public Nullable<DateTime> AddedDate { get; set; }
     }

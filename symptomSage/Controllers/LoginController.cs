@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using symptomSage.BusinessLogic;
@@ -18,14 +19,12 @@ namespace symptomSage.Controllers
             _session = bl.GetSessionBl();
         }
         
-        // GET LOGIN PAGE
         [Route("login")]
         public ActionResult Login()
         {
             return View();
         }
         
-        // LOGIN
         [HttpPost]
         [Route("login")]
         [ValidateAntiForgeryToken]
@@ -45,12 +44,15 @@ namespace symptomSage.Controllers
                 
                 if (userLogin.Status)
                 {
+                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                    ModelState.AddModelError("", userLogin.StatusMsg);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", userLogin.StatusMsg);
-                    // return View();
+                    return View("Login");
                 }
             }
             return View();

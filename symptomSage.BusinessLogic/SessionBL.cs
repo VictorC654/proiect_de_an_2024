@@ -16,6 +16,11 @@ namespace symptomSage.BusinessLogic
         {
             return URegisterAction(data);
         }
+
+        public SRegisterResp SymptomRegister(SRegisterData data)
+        {
+            return SRegisterAction(data);
+        }
         public HttpCookie GenCookie(string loginCredential)
         {
             return Cookie(loginCredential);

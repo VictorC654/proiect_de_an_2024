@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using symptomSage.BusinessLogic.Interfaces;
+using symptomSage.Domain.Entities.Symptoms;
+using symptomSage.Domain.Enums;
 using symptomSage.Extension;
 using symptomSage.Models;
 namespace symptomSage.Controllers
@@ -42,6 +41,55 @@ namespace symptomSage.Controllers
         //     
         //     return View("AdminSymptomsList");
         // }
+
+        
+        [Route("sadminpanel")]
+        public ActionResult SAdminPanel()
+        {
+            bool isAdmin = true;
+
+            // if (System.Web.HttpContext.Current.GetMySessionObject() != null)
+            // {
+            
+                var user = System.Web.HttpContext.Current.GetMySessionObject();
+                if (user.Level == URole.Admin)
+                {
+                    var symptomsList = _session.SymptomsList(isAdmin);
+
+                    ViewBag.symptomsList = symptomsList.Symptoms;
+                    return View();
+                }
+            // }
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Route("registersymptom")]
+        public ActionResult RegisterSymptom()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        [Route("registersymptom")]
+        public ActionResult RegisterSymptom(SymptomRegister symptom)
+        {
+            if (ModelState.IsValid)
+            {
+                SRegisterData data = new SRegisterData
+                {
+                    Name = symptom.Name,
+                    Category = symptom.Category,
+                };
+                var symptomRegister = _session.SymptomRegister(data);
+                
+                if (symptomRegister.Status)
+                {
+                    return RedirectToAction("SAdminPanel", "Symptoms");
+                }
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult AdminSymptomsList()
         {
             bool isAdmin = true;

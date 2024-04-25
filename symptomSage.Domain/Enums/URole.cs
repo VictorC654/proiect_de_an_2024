@@ -2,8 +2,9 @@
 {
     public enum URole
     {
+        // Guest,
         User,
+        Moderator,
         Admin,
-        Moderator
     }
 }

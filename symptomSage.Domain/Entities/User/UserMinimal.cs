@@ -1,4 +1,6 @@
 ﻿using System;
+using symptomSage.Domain.Enums;
+
 
 namespace symptomSage.Domain.Entities.User
 {
@@ -9,5 +11,6 @@ namespace symptomSage.Domain.Entities.User
         public string Email { get; set; }
         public Nullable<DateTime> LastLogin { get; set; }
         public string LasIp { get; set; }
+        public URole Level { get; set; }
     }
 }
