@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using symptomSage.BussinesLogic.Interfaces;
+using symptomSage.BusinessLogic.Interfaces;
 using symptomSage.Domain.Entities.User;
 using symptomSage.Models;
 
@@ -11,7 +11,7 @@ namespace symptomSage.Controllers
 
         public RegisterController()
         {
-            var bl = new BussinesLogic.BussinesLogic();
+            var bl = new BusinessLogic.BussinesLogic();
             _session = bl.GetSessionBl();
         }
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symptomSage.Web", "symptomSage\symptomSage.Web.csproj", "{E4037669-B91A-47F8-80DE-8EA9A17EC82F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symptomSage.BussinesLogic", "symptomSage.BussinesLogic\symptomSage.BussinesLogic.csproj", "{96BD5C43-5346-4560-BEA0-C7C7CABAE1D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symptomSage.BusinessLogic", "symptomSage.BusinessLogic\symptomSage.BusinessLogic.csproj", "{96BD5C43-5346-4560-BEA0-C7C7CABAE1D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symptomSage.Domain", "symptomSage.Domain\symptomSage.Domain.csproj", "{8D7ACD9C-3CF9-453E-8B7A-63B685CD57D5}"
 EndProject

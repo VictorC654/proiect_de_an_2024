@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Symptoms\SDbTable.cs" />
-    <Compile Include="Entities\Symptoms\SymptomDetailsData.cs" />
+    <Compile Include="Entities\Symptoms\SymptomsDetailsData.cs" />
     <Compile Include="Entities\Symptoms\SymptomsListData.cs" />
     <Compile Include="Entities\Symptoms\SymptomsDetailsResp.cs" />
     <Compile Include="Entities\Symptoms\SymptomsListResp.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using symptomSage.BussinesLogic.Interfaces;
+using symptomSage.BusinessLogic.Interfaces;
 using symptomSage.Extension;
 using symptomSage.Models;
 namespace symptomSage.Controllers
@@ -14,7 +14,7 @@ namespace symptomSage.Controllers
 
         public SymptomsController()
         {
-            var bl = new BussinesLogic.BussinesLogic();
+            var bl = new BusinessLogic.BussinesLogic();
             _session = bl.GetSessionBl();
         }
         

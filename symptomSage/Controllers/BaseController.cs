@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using symptomSage.BussinesLogic.Interfaces;
+using symptomSage.BusinessLogic.Interfaces;
 using symptomSage.Extension;
-using symptomSage.BussinesLogic;
+using symptomSage.BusinessLogic;
 namespace symptomSage.Controllers
 {
     public class BaseController : Controller
@@ -12,7 +12,7 @@ namespace symptomSage.Controllers
 
         public BaseController()
         {
-            var bl = new BussinesLogic.BussinesLogic();
+            var bl = new BusinessLogic.BussinesLogic();
             _session = bl.GetSessionBl();
         }   
 

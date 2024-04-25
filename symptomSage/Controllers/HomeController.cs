@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using symptomSage.Domain.Entities.User;
-using symptomSage.BussinesLogic.DBModel;
+using symptomSage.BusinessLogic.DBModel;
 namespace symptomSage.Controllers
 {
     public class HomeController : Controller
