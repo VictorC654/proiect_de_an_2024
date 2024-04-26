@@ -11,7 +11,7 @@ namespace symptomSage.Models
 
         [Required(ErrorMessage = "Introduce-ti descrierea simptomului!")]
         [Display(Name = "Category")]
-        [StringLength(20)]
+        [StringLength(60)]
         public string Category { get; set; }
         
     }

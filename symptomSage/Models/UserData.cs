@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using symptomSage.BusinessLogic.Core;
+using symptomSage.Domain.Enums;
 
 namespace symptomSage.Models
 {
@@ -6,6 +8,6 @@ namespace symptomSage.Models
     {
         public string Username { get; set; }
         
-        public int Level { get; set; }
+        public URole Level { get; set; }
     }
 }

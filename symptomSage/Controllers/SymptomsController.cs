@@ -24,49 +24,41 @@ namespace symptomSage.Controllers
             u.Username = "Victor";
             return View(u);
         }
-        // public ActionResult SymptomList()
-        // {
-        //     bool isAdmin = false;
-        //     var user = System.Web.HttpContext.Current.GetMySessionObject();
-        //     UserData u = new UserData
-        //     {
-        //         Username = user.Username,
-        //     };
-        //
-        //     var blogList = _session.SymptomsList(isAdmin);
-        //     
-        //     
-        //     ViewBag.username = u.Username;
-        //     ViewBag.blogList = blogList.Symptoms;
-        //     
-        //     return View("AdminSymptomsList");
-        // }
-
         
         [Route("sadminpanel")]
         public ActionResult SAdminPanel()
         {
             bool isAdmin = true;
-
-            // if (System.Web.HttpContext.Current.GetMySessionObject() != null)
-            // {
-            
-                var user = System.Web.HttpContext.Current.GetMySessionObject();
-                if (user.Level == URole.Admin)
+            // middleware
+                if(System.Web.HttpContext.Current.GetMySessionObject() != null ) 
                 {
-                    var symptomsList = _session.SymptomsList(isAdmin);
-
-                    ViewBag.symptomsList = symptomsList.Symptoms;
-                    return View();
+                    var user = System.Web.HttpContext.Current.GetMySessionObject();
+                    if (user.Level == URole.Admin || user.Level == URole.Moderator)
+                    {
+                        var symptomsList = _session.SymptomsList(isAdmin);
+                        UserData userData = new UserData()
+                        {
+                            Username = user.Username,
+                            Level = user.Level,
+                        };
+                        ViewBag.user = userData.Username;
+                        ViewBag.symptomsList = symptomsList.Symptoms;
+                        return View();
+                    }
                 }
-            // }
             return RedirectToAction("Index", "Home");
         }
         
         [Route("registersymptom")]
         public ActionResult RegisterSymptom()
         {
-            return View();
+            // middleware
+            var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
+            if (checkUser)
+            {
+                return View();
+            }
+            return RedirectToAction("Index","Home");
         }
         
         [HttpPost]
@@ -90,23 +82,5 @@ namespace symptomSage.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult AdminSymptomsList()
-        {
-            bool isAdmin = true;
-            var user = System.Web.HttpContext.Current.GetMySessionObject();
-            UserData u = new UserData
-            {
-                Username = user.Username,
-            };
-
-            var symptomsList = _session.SymptomsList(isAdmin);
-            
-            
-            ViewBag.username = u.Username;
-            ViewBag.symptomList = symptomsList.Symptoms;
-            
-            return View("AdminSymptomsList");
-        }
-
     }
 }

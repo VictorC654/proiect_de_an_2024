@@ -185,7 +185,6 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Shared\_LoginRegisterLayout.cshtml" />
-    <Content Include="Views\Symptoms\AdminSymptomsList.cshtml" />
     <Content Include="Views\Symptoms\RegisterSymptom.cshtml" />
     <Content Include="Views\Symptoms\SAdminPanel.cshtml" />
     <Content Include="Web.config" />

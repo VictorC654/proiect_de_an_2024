@@ -1,4 +1,6 @@
-﻿
+﻿@using symptomSage.Domain.Enums
+@using symptomSage.Extension
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +26,9 @@
 </head>
 
 <body>
+    @{
+       var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null;
+    }
     <header class="sticky">
         <!--Navbar Start-->
         <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="navbar">
@@ -45,11 +50,37 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("select", "Symptoms")"><i class="fa-solid fa-arrow-pointer mr-1"></i>Selecteaza simptome</a>
                         </li>
+                        @if (System.Web.HttpContext.Current.GetMySessionObject() != null)
+                        {
+                            var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin || System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Moderator;
+
+                            if (checkUserRole)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("SAdminPanel", "Symptoms")">
+                                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                                        Symptoms Admin Panel
+                                    </a>
+                                </li>
+                            }
+                        }
+                            
+                        @if(checkUser)
+                        {
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Login", "Login")">
-                                <i class="fa-solid fa-user mr-1"></i>Login
+                            <a style="font-weight:bold;" class="nav-link" href="@Url.Action("Login", "Login")">
+                                <i class="fa-solid fa-user mr-1"></i>@System.Web.HttpContext.Current.GetMySessionObject().Username
                             </a>
                         </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Login", "Login")">
+                                    <i class="fa-solid fa-user mr-1"></i>Login
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,7 @@
-﻿@using symptomSage.Models
+﻿@using System.Activities.Statements
+@using symptomSage.Domain.Enums
+@using symptomSage.Extension
+@using symptomSage.Models
 @model symptomSage.Models.SymptomsData
 <style>
  .myTh
@@ -13,8 +16,9 @@
     background: transparent;
     padding: 1em;
     color: white;
+    margin: 0 auto;
     font-weight: bold;
-    border-radius: .3em;
+    border-radius: .5em;
     transition:.5s all ease;
  }
  .addButton:hover
@@ -23,12 +27,46 @@
     transition:.5s all ease;
  }
 </style>
+@{
+       var user = System.Web.HttpContext.Current.GetMySessionObject();
+       var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null;
+       // if (checkUser)
+       // {
+       //     var user = System.Web.HttpContext.Current.GetMySessionObject();
+       // }
+       var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
+    }
 <section class="page-header-box bg-success">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-left">
                     <h3 class="page-header-title text-white" style="font-size:2em;">Administrarea simptomelor disponibile</h3>
+                    <div style="display:flex;flex-direction:row;align-items: center;" class="text-light">
+                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                            AUTENTIFICAT CA:
+                        </div>
+                        <div style="font-size:1em;margin-left:.5em;">
+                            @user.Username
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-direction:row;" class="text-light">
+                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                            NIVEL:
+                        </div>
+                        <div style="font-size:1em;margin-left:.5em;font-weight: bold;" class="text-danger">
+                            @user.Level
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-direction:row;" class="text-light">
+                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                            SIMPTOME:
+                        </div>
+                        <div style="font-size:1em;margin-left:.5em;">
+                            @* @user.Level *@
+                            8
+                        </div>
+                    </div>
                 </div>
                 <div class="text-right">
                     <div class="">
@@ -42,8 +80,9 @@
 <section class="section">
     <div class="container-fluid">
         <div class="col">
-            <a class="bg-warning text-right addButton" href="@Url.Action("RegisterSymptom", "Symptoms")">
+            <a class="me-auto bg-primary text-right addButton" href="@Url.Action("RegisterSymptom", "Symptoms")">
                 @* <i class="fa-solid fa-circle-plus text-danger"></i> Add symptom *@
+                <i class="fa-solid fa-stethoscope text-danger"></i>
                 Add symptom
             </a>
         

@@ -55,7 +55,6 @@
     <Compile Include="BussinesLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\SymptomApi.cs" />
-    <Compile Include="Core\URole.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\SymptomContext.cs" />
