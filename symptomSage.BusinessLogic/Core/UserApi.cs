@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using symptomSage.BusinessLogic.DBModel;
 using symptomSage.Domain.Entities.User;
@@ -37,7 +38,6 @@ namespace symptomSage.BusinessLogic.Core
             {
                 result.LasIp = data.LoginIP;
                 result.LastLogin = data.LoginDateTime;
-                // result.Level = 0;
                 todo.Entry(result).State = (System.Data.Entity.EntityState)EntityState.Modified;
                 try
                 {

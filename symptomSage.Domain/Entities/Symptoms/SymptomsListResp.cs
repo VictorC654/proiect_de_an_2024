@@ -6,6 +6,8 @@ namespace symptomSage.Domain.Entities.Symptoms
     {
         public List<SymptomsListData> Symptoms { get; set; }
         public bool Status { get; set; }
+        
+        public int nrOfSymptoms;
         public string StatusMsg { get; set; }
     }
 }

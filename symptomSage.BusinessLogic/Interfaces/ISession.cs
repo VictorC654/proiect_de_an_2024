@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using symptomSage.Domain.Entities.Doctors;
+using symptomSage.Domain.Entities.Medicine;
 using symptomSage.Domain.Entities.Symptoms;
 using symptomSage.Domain.Entities.User;
 
@@ -18,6 +20,10 @@ namespace symptomSage.BusinessLogic.Interfaces
             UserMinimal GetUserByCookie(string apiCookieValue);
 
             SRegisterResp SymptomRegister(SRegisterData data);
+
+            MRegisterResp MedicineRegister(MRegisterData data);
+
+            DRegisterResp DoctorRegister(DRegisterData data);
 
             SymptomsListResp SymptomsList(bool isAdmin);
             SymptomsDetailsResp SymptomDetails(int symptomId);

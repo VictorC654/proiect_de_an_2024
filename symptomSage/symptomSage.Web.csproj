@@ -56,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -129,14 +130,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MedicineController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SymptomsController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoctorData.cs" />
+    <Compile Include="Models\DoctorRegister.cs" />
+    <Compile Include="Models\MedicineData.cs" />
+    <Compile Include="Models\MedicineRegister.cs" />
     <Compile Include="Models\SymptomRegister.cs" />
     <Compile Include="Models\SymptomsData.cs" />
     <Compile Include="Models\UserData.cs" />
@@ -181,8 +188,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Doctors\DAdminPanel.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Medicine\MAdminPanel.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Shared\_LoginRegisterLayout.cshtml" />
     <Content Include="Views\Symptoms\RegisterSymptom.cshtml" />

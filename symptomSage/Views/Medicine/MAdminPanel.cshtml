@@ -1,0 +1,175 @@
+﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
+@using symptomSage.Domain.Enums
+@using symptomSage.Extension
+@using symptomSage.Models
+@model symptomSage.Models.MedicineRegister
+<style>
+ .myTh
+ {
+    color: white;
+    font-weight: bold;
+    letter-spacing:.1em;
+ }
+ 
+ .addButton
+ {
+    background: transparent;
+    padding: 1em;
+    color: white;
+    margin: 0 auto;
+    font-weight: bold;
+    border: none;
+    border-radius: .5em;
+    transition:.5s all ease;
+ }
+ .addButton:hover
+ {
+    color: white;
+    transition:.5s all ease;
+ }
+</style>
+@{
+       var user = System.Web.HttpContext.Current.GetMySessionObject();
+       var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null;
+       // if (checkUser)
+       // {
+       //     var user = System.Web.HttpContext.Current.GetMySessionObject();
+       // }
+       var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
+    }
+<section class="page-header-box bg-success">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-left">
+                    <h3 class="page-header-title text-white" style="font-size:2em;">Administrarea simptomelor disponibile</h3>
+                </div>
+                <div class="text-right">
+                        <div style="display:flex;flex-direction:row;align-items: center;" class="text-light">
+                            <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                                AUTENTIFICAT CA:
+                            </div>
+                            <div style="font-size:1em;margin-left:.5em;">
+                                @user.Username
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;" class="text-light">
+                            <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                                NIVEL:
+                            </div>
+                            <div style="font-size:1em;margin-left:.5em;font-weight: bold;" class="text-danger">
+                                @user.Level
+                            </div>
+                        </div>
+                        @* <div style="display:flex;flex-direction:row;" class="text-light"> *@
+                        @*     <div style="font-weight:bold;font-size:.8em;margin-top: .2em;"> *@
+                        @*         NUMARUL DE SIMPTOME INREGISTRATE: *@
+                        @*     </div> *@
+                        @*     <div style="font-size:1em;margin-left:.5em;"> *@
+                        @*         $1$ @ViewBag.nrOfSymptoms #1# *@
+                        @*     </div> *@
+                        @* </div> *@
+                </div>
+            </div>
+        </div> <!--end row-->
+    </div> <!--end container-->
+</section>
+<section class="section">
+    <div class="container-fluid">
+        <div class="col">
+            @* <a class="me-auto bg-primary text-right addButton" href="@Url.Action("RegisterSymptom", "Symptoms")"> *@
+            @*     $1$ <i class="fa-solid fa-circle-plus text-danger"></i> Add symptom #1# *@
+            @*     <i class="fa-solid fa-stethoscope text-danger"></i> *@
+            @*     Add symptom *@
+            @* </a> *@
+            <button class="bg-success text-right addButton" data-toggle="modal" data-target="#addSymptomModal">
+              <i class="fa-solid fa-stethoscope text-danger"></i> Add medicine
+            </button>
+        
+            @* <table style="border-radius: 1em;" class="mt-3 w-100 table bg-white"> *@
+            @*     <thead class="bg-success"> *@
+            @*     <tr> *@
+            @*         <th class="myTh" scope="col">ID</th> *@
+            @*         <th class="myTh" scope="col">NAME</th> *@
+            @*         <th class="myTh" scope="col">CATEGORY</th> *@
+            @*         <th class="myTh" scope="col">ACTIONS</th> *@
+            @*     </tr> *@
+            @*     </thead> *@
+            @*     <tbody > *@
+            @* *@
+            @*     @foreach (var symptom in ViewBag.symptomsList) *@
+            @*     { *@
+            @*         <tr> *@
+            @*             <th>@symptom.Id</th> *@
+            @*             <th>@symptom.Name</th> *@
+            @*             <th>@symptom.Category</th> *@
+            @*             <th><button class="btn btn-danger">Delete</button></th> *@
+            @*         </tr> *@
+            @*     } *@
+            @*     </tbody> *@
+            @* </table> *@
+        </div>
+    </div>
+</section>
+<div class="modal fade" tabindex="-1" role="dialog" id="addSymptomModal">
+    @using (Html.BeginForm("RegisterMedicine", "Medicine", FormMethod.Post))
+           {
+             @Html.AntiForgeryToken()
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">
+                             <i style="font-size:1.5em;" class="fa-solid fa-stethoscope mr-1 text-danger"></i>
+                             Adauga un medicament
+                         </h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="mb-2 text-dark fw-bold" style="font-weight:bold;font-size:2em;">
+                             <i class="fa-regular fa-hospital mr-1 text-dark"></i> symptomSage
+                         </div>
+                         <div class="pl-1 pr-1" style="display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
+                             <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU NUMELE, CATEGORIA SI DESCRIEREA</div>
+
+                             <div class="form-group border-danger">
+                                 @Html.TextBoxFor(model => model.Name, new
+                                 {
+                                     placeholder = "Denumire",
+                                     value = "",
+                                     name = "name",
+                                     id = "name",
+                                     @class = "form-control"
+                                 })
+                                 @Html.ValidationMessageFor(model => model.Name)
+                                 @Html.TextBoxFor(model => model.Desc, new
+                                  {
+                                      placeholder = "Descriere",
+                                      value = "",
+                                      name = "desc",
+                                      id = "desc",
+                                      @class = "form-control mt-1"
+                                  })
+                                 @Html.ValidationMessageFor(model => model.Desc)
+                                 
+                                 @Html.TextBoxFor(model => model.Category, new { @class = "form-control mt-1", name = "category", placeholder = "Categorie", id = "category" })
+                                 @Html.ValidationMessageFor(model => model.Category)
+                             </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button style="border-radius:.5em" type="submit" class="btn btn-success">Add symptom</button>
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     </div>
+                 </div>
+             </div>
+           }
+</div>
+<script>
+    $('#addSymptomModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+</script>
+

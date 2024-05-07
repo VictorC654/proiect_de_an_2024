@@ -17,7 +17,7 @@ namespace symptomSage.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Introduceti parola")]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password)]   
         [Display(Name = "Password")]
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Parola nu poate fi mai scurta de 8 caractere")]
         public string Password { get; set; }

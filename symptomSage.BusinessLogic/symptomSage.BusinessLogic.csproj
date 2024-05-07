@@ -54,8 +54,12 @@
     <Compile Include="Authentication.cs" />
     <Compile Include="BussinesLogic.cs" />
     <Compile Include="Core\AdminApi.cs" />
+    <Compile Include="Core\DoctorApi.cs" />
+    <Compile Include="Core\MedicineApi.cs" />
     <Compile Include="Core\SymptomApi.cs" />
     <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\DoctorContext.cs" />
+    <Compile Include="DBModel\MedicineContext.cs" />
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\SymptomContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />

@@ -2,6 +2,8 @@
 using System.Web;
 using symptomSage.BusinessLogic.Core;
 using symptomSage.BusinessLogic.Interfaces;
+using symptomSage.Domain.Entities.Doctors;
+using symptomSage.Domain.Entities.Medicine;
 using symptomSage.Domain.Entities.Symptoms;
 
 namespace symptomSage.BusinessLogic
@@ -20,6 +22,16 @@ namespace symptomSage.BusinessLogic
         public SRegisterResp SymptomRegister(SRegisterData data)
         {
             return SRegisterAction(data);
+        }
+
+        public MRegisterResp MedicineRegister(MRegisterData data)
+        {
+            return MRegisterAction(data);
+        }
+
+        public DRegisterResp DoctorRegister(DRegisterData data)
+        {
+            return DRegisterAction(data);   
         }
         public HttpCookie GenCookie(string loginCredential)
         {

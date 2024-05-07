@@ -8,7 +8,7 @@ using symptomSage.Domain.Entities.Symptoms;
 
 namespace symptomSage.BusinessLogic.Core
 {
-    public class SymptomApi
+    public class SymptomApi : MedicineApi
     {
 
         internal SRegisterResp SRegisterAction(SRegisterData data)
@@ -60,11 +60,14 @@ namespace symptomSage.BusinessLogic.Core
                     AddedDate = s.AddedDate
                 });
             }
+
+            int nrOfSymptoms = result.Count;
             
             return new SymptomsListResp() { 
                 Symptoms = symptoms,
                 Status = true,                     
-                StatusMsg = "Success"
+                StatusMsg = "Success",
+                nrOfSymptoms = nrOfSymptoms,
             };
         }
         

@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Doctors\DDbTable.cs" />
+    <Compile Include="Entities\Doctors\DRegisterData.cs" />
+    <Compile Include="Entities\Doctors\DRegisterResp.cs" />
+    <Compile Include="Entities\Medicine\MDbTable.cs" />
+    <Compile Include="Entities\Medicine\MRegisterData.cs" />
+    <Compile Include="Entities\Medicine\MRegisterResp.cs" />
     <Compile Include="Entities\Symptoms\SDbTable.cs" />
     <Compile Include="Entities\Symptoms\SRegisterData.cs" />
     <Compile Include="Entities\Symptoms\SRegisterResp.cs" />

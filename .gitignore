@@ -1,7 +1,7 @@
 .idea
 .vs
-symptomSage.BussinesLogic/bin
-symptomSage.BussinesLogic/obj
+symptomSage.BusinessLogic/bin
+symptomSage.BusinessLogic/obj
 symptomSage.Domain/bin
 symptomSage.Domain/obj
 symptomSage.Helpers/obj

@@ -36,6 +36,7 @@ namespace symptomSage.Controllers
                     if (user.Level == URole.Admin || user.Level == URole.Moderator)
                     {
                         var symptomsList = _session.SymptomsList(isAdmin);
+                        
                         UserData userData = new UserData()
                         {
                             Username = user.Username,
@@ -43,6 +44,7 @@ namespace symptomSage.Controllers
                         };
                         ViewBag.user = userData.Username;
                         ViewBag.symptomsList = symptomsList.Symptoms;
+                        ViewBag.nrOfSymptoms = symptomsList.nrOfSymptoms;
                         return View();
                     }
                 }

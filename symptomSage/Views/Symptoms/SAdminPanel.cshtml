@@ -1,8 +1,10 @@
 ﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
 @using symptomSage.Domain.Enums
 @using symptomSage.Extension
 @using symptomSage.Models
-@model symptomSage.Models.SymptomsData
+@model symptomSage.Models.SymptomRegister
+@* @model symptomSage.Models.SymptomsData *@
 <style>
  .myTh
  {
@@ -18,6 +20,7 @@
     color: white;
     margin: 0 auto;
     font-weight: bold;
+    border: none;
     border-radius: .5em;
     transition:.5s all ease;
  }
@@ -42,36 +45,32 @@
             <div class="col-lg-12">
                 <div class="text-left">
                     <h3 class="page-header-title text-white" style="font-size:2em;">Administrarea simptomelor disponibile</h3>
-                    <div style="display:flex;flex-direction:row;align-items: center;" class="text-light">
-                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
-                            AUTENTIFICAT CA:
-                        </div>
-                        <div style="font-size:1em;margin-left:.5em;">
-                            @user.Username
-                        </div>
-                    </div>
-                    <div style="display:flex;flex-direction:row;" class="text-light">
-                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
-                            NIVEL:
-                        </div>
-                        <div style="font-size:1em;margin-left:.5em;font-weight: bold;" class="text-danger">
-                            @user.Level
-                        </div>
-                    </div>
-                    <div style="display:flex;flex-direction:row;" class="text-light">
-                        <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
-                            SIMPTOME:
-                        </div>
-                        <div style="font-size:1em;margin-left:.5em;">
-                            @* @user.Level *@
-                            8
-                        </div>
-                    </div>
                 </div>
                 <div class="text-right">
-                    <div class="">
-                        @* <img src="../../Images/pic3.png" alt="" width="250" class=""> *@
-                    </div>
+                        <div style="display:flex;flex-direction:row;align-items: center;" class="text-light">
+                            <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                                AUTENTIFICAT CA:
+                            </div>
+                            <div style="font-size:1em;margin-left:.5em;">
+                                @user.Username
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;" class="text-light">
+                            <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                                NIVEL:
+                            </div>
+                            <div style="font-size:1em;margin-left:.5em;font-weight: bold;" class="text-danger">
+                                @user.Level
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:row;" class="text-light">
+                            <div style="font-weight:bold;font-size:.8em;margin-top: .2em;">
+                                NUMARUL DE SIMPTOME INREGISTRATE:
+                            </div>
+                            <div style="font-size:1em;margin-left:.5em;">
+                                @ViewBag.nrOfSymptoms
+                            </div>
+                        </div>
                 </div>
             </div>
         </div> <!--end row-->
@@ -80,11 +79,14 @@
 <section class="section">
     <div class="container-fluid">
         <div class="col">
-            <a class="me-auto bg-primary text-right addButton" href="@Url.Action("RegisterSymptom", "Symptoms")">
-                @* <i class="fa-solid fa-circle-plus text-danger"></i> Add symptom *@
-                <i class="fa-solid fa-stethoscope text-danger"></i>
-                Add symptom
-            </a>
+            @* <a class="me-auto bg-primary text-right addButton" href="@Url.Action("RegisterSymptom", "Symptoms")"> *@
+            @*     $1$ <i class="fa-solid fa-circle-plus text-danger"></i> Add symptom #1# *@
+            @*     <i class="fa-solid fa-stethoscope text-danger"></i> *@
+            @*     Add symptom *@
+            @* </a> *@
+            <button class="bg-success text-right addButton" data-toggle="modal" data-target="#addSymptomModal">
+              <i class="fa-solid fa-stethoscope text-danger"></i> Add symptom
+            </button>
         
             <table style="border-radius: 1em;" class="mt-3 w-100 table bg-white">
                 <thead class="bg-success">
@@ -111,4 +113,54 @@
         </div>
     </div>
 </section>
+<div class="modal fade" tabindex="-1" role="dialog" id="addSymptomModal">
+    @using (Html.BeginForm("RegisterSymptom", "Symptoms", FormMethod.Post))
+           {
+             @Html.AntiForgeryToken()
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title">
+                             <i style="font-size:1.5em;" class="fa-solid fa-stethoscope mr-1 text-danger"></i>
+                             Adauga un simptom
+                         </h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="mb-2 text-dark fw-bold" style="font-weight:bold;font-size:2em;">
+                             <i class="fa-regular fa-hospital mr-1 text-dark"></i> symptomSage
+                         </div>
+                         <div class="pl-1 pr-1" style="display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
+                             <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU NUMELE SI CATEGORIA</div>
+
+                             <div class="form-group border-danger">
+                                 @Html.TextBoxFor(model => model.Name, new
+                                 {
+                                     placeholder = "Simptomul",
+                                     value = "",
+                                     name = "name",
+                                     id = "name",
+                                     @class = "form-control"
+                                 })
+                                 @Html.ValidationMessageFor(model => model.Name)
+                                 @Html.TextBoxFor(model => model.Category, new { @class = "form-control mt-1", name = "category", placeholder = "Categorie", id = "category" })
+                                 @Html.ValidationMessageFor(model => model.Category)
+                             </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button style="border-radius:.5em" type="submit" class="btn btn-success">Add symptom</button>
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     </div>
+                 </div>
+             </div>
+           }
+</div>
+<script>
+    $('#addSymptomModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+</script>
 
