@@ -1,6 +1,10 @@
-﻿using System.Web;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using symptomSage.BusinessLogic.Interfaces;
+using symptomSage.Domain.Entities.Medicine;
 using symptomSage.Domain.Entities.Symptoms;
 using symptomSage.Domain.Enums;
 using symptomSage.Extension;
@@ -20,11 +24,13 @@ namespace symptomSage.Controllers
         [Route("selectsymptoms")]
         public ActionResult Select()
         {
-            UserData u = new UserData();
-            u.Username = "Victor";
-            return View(u);
+            
+            var symptomsList = _session.SymptomsList(true);
+            
+            ViewBag.symptomsList = symptomsList.Symptoms;
+            return View();
         }
-        
+
         [Route("sadminpanel")]
         public ActionResult SAdminPanel()
         {
@@ -81,6 +87,45 @@ namespace symptomSage.Controllers
                     return RedirectToAction("SAdminPanel", "Symptoms");
                 }
 
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        
+        public ActionResult SearchResult()
+        {
+            List<MedicineListData> medicine = TempData["medicine"] as List<MedicineListData>;
+            // string medicine = TempData["medicine"] as string;
+            if (medicine != null)
+            {
+                ViewBag.medicine = medicine;
+            }
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult SearchSymptom(SymptomsData model)
+        {
+            if (ModelState.IsValid)
+            {
+                List<string> selectedSymptoms = model.selectedSymptoms;
+                List<string> ssList = new List<string>();
+                foreach (string symptom in selectedSymptoms)
+                {
+                    ssList.Add(symptom);
+                }
+                
+                SymptomsSearchReg data = new SymptomsSearchReg
+                {
+                    symptomIds = ssList,
+                };
+                
+                var searchForSymptoms = _session.SymptomSearch(data);
+                
+                if (searchForSymptoms.Status)
+                {
+                    TempData["medicine"] = searchForSymptoms.Medicine;
+                    return RedirectToAction("SearchResult");
+                }
             }
             return RedirectToAction("Index", "Home");
         }

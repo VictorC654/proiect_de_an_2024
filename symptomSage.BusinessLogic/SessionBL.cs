@@ -41,6 +41,11 @@ namespace symptomSage.BusinessLogic
         {
             return UserCookie(apiCookieValue);
         }
+        
+        public SymptomsSearchResp SymptomSearch(SymptomsSearchReg data)
+        {
+            return SSearchData(data);
+        }
         public SymptomsListResp SymptomsList(bool isAdmin)
         {
             return SymptomListAction();

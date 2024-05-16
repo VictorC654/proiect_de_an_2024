@@ -1,4 +1,6 @@
-﻿namespace symptomSage.Domain.Entities.Symptoms
+﻿using System.Collections.Generic;
+
+namespace symptomSage.Domain.Entities.Symptoms
 {
     public class SymptomsDetailsResp
     {

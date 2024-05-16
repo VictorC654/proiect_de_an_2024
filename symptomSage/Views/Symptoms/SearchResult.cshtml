@@ -1,0 +1,53 @@
+﻿@using System.Activities.Statements
+@using System.Web.UI.WebControls
+@using symptomSage.Domain.Enums
+@using symptomSage.Extension
+@using symptomSage.Models
+@model symptomSage.Models.SymptomRegister
+@* @model symptomSage.Models.SymptomsData *@
+<style>
+ .myTh
+ {
+    color: white;
+    font-weight: bold;
+    letter-spacing:.1em;
+ }
+ 
+ .addButton
+ {
+    background: transparent;
+    padding: 1em;
+    color: white;
+    margin: 0 auto;
+    font-weight: bold;
+    border: none;
+    border-radius: .5em;
+    transition:.5s all ease;
+ }
+ .addButton:hover
+ {
+    color: white;
+    transition:.5s all ease;
+ }
+</style>
+@{
+       var user = System.Web.HttpContext.Current.GetMySessionObject();
+       var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null;
+       // if (checkUser)
+       // {
+       //     var user = System.Web.HttpContext.Current.GetMySessionObject();
+       // }
+       var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
+    }
+<section class="page-header-box bg-success">
+    @foreach(var medicine in @ViewBag.medicine)
+    {
+        @medicine.Name
+    }
+</section>
+<script>
+    $('#addSymptomModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+</script>
+
