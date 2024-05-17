@@ -30,21 +30,95 @@
     transition:.5s all ease;
  }
 </style>
-@{
-       var user = System.Web.HttpContext.Current.GetMySessionObject();
-       var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null;
-       // if (checkUser)
-       // {
-       //     var user = System.Web.HttpContext.Current.GetMySessionObject();
-       // }
-       var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
-    }
+@* @{ *@
+@*        var user = System.Web.HttpContext.Current.GetMySessionObject(); *@
+@*        var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null; *@
+@*        // if (checkUser) *@
+@*        // { *@
+@*        //     var user = System.Web.HttpContext.Current.GetMySessionObject(); *@
+@*        // } *@
+@*        var checkUserRole = checkUser && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin; *@
+@*     } *@
 <section class="page-header-box bg-success">
-    @foreach(var medicine in @ViewBag.medicine)
-    {
-        @medicine.Name
-    }
+    <div style="font-weight:bold;display:flex;flex-direction:row;justify-content: center;font-size: 1.8em;">
+        Rezultatele cautarii
+    </div>
+    <div style="display:flex;flex-direction:row;justify-content: center;font-size: 1.1em;margin-top:-.4em;margin-bottom:1em;">
+        PENTRU URMATOARELE SIMPTOME: 
+        <div class="text-danger ml-1" style="font-weight:bold;">
+        @foreach(var selectedSymptom in ViewBag.selectedSymptoms)
+        {
+                
+            if (ViewBag.selectedSymptoms.IndexOf(selectedSymptom) != ViewBag.selectedSymptoms.Count - 1)
+            {
+                @(selectedSymptom.ToUpper() + ", ")
+            }
+            else
+            {
+                @(selectedSymptom.ToUpper())
+            }
+        }
+        </div>
+    </div>
+    <div style="margin:0 auto;width: 50em;text-align: center;">
+            Vă mulțumim că ați ales să utilizați serviciile noastre de diagnosticare online.
+        Este important să rețineți că orice informații și recomandări furnizate de acest
+        serviciu sunt destinate exclusiv scopurilor informative și educative și nu ar trebui să
+        fie considerate substitut pentru sfaturile medicale profesioniste,
+        diagnosticul sau tratamentul oferit de către un specialist din domeniul medical.
+    </div>
 </section>
+<div class="container" style="margin-top:3em;">
+    <div class="row" style="">
+        <div class="col-sm" style="height:3em;border-right: 1px solid lightgray;font-size:1.5em;display:flex;flex-direction:row;justify-content: center;border-right: 1px solid lightgray;">
+            MEDICAMENTELE RECOMANDATE DE NOI
+        </div>
+        <div class="col-sm" style="font-size:1.5em;display:flex;flex-direction:row;justify-content: center;">
+            MEDICI RECOMANDATI DE NOI
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top:3em;">
+<div class="row">
+    <div class="col-sm" style="">
+        @foreach (var medicine in @ViewBag.medicine)
+        {
+            <div class="card" style="max-width:35em;min-width: 35em;min-height:25em;">
+                @* <img style="max-width:15em;" class="card-img-top" src="https://farmaciaprofarm.ro/media/catalog/product/p/a/paracetamol-biofarm308.jpg" alt="Card image cap"> *@
+                <div style="font-size:.8em;letter-spacing:.1em;"class="card-header">MEDICAMENTE</div>
+                <div style="font-weight:bold;" class="card-body text-success">
+                    @medicine.Name
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @medicine.Desc
+                    </li>
+                    <li class="list-group-item"><b>Categorie: </b>@medicine.Category</li>
+                </ul>
+            </div>
+        }
+    </div>
+    <div class="col-sm" style="">
+        @foreach (var doctor in @ViewBag.doctors)
+                {
+                    <div class="card" style="max-width:35em;min-width: 35em;min-height:25em;">
+                        @* <img style="max-width:15em;" class="card-img-top" src="https://farmaciaprofarm.ro/media/catalog/product/p/a/paracetamol-biofarm308.jpg" alt="Card image cap"> *@
+                        <div style="font-size:.8em;letter-spacing:.1em;"class="card-header">MEDICI</div>
+                        <div style="font-weight:bold;" class="card-body text-success">
+                            @doctor.Name
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                @doctor.Desc
+                            </li>
+                            <li class="list-group-item"><b>Categorie: </b>@doctor.Category</li>
+                        </ul>
+                    </div>
+                }
+    </div>
+</div>
+</div>
+@* </section> *@
 <script>
     $('#addSymptomModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')

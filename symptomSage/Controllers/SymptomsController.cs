@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using symptomSage.BusinessLogic.Interfaces;
+using symptomSage.Domain.Entities.Doctors;
 using symptomSage.Domain.Entities.Medicine;
 using symptomSage.Domain.Entities.Symptoms;
 using symptomSage.Domain.Enums;
@@ -94,10 +96,15 @@ namespace symptomSage.Controllers
         public ActionResult SearchResult()
         {
             List<MedicineListData> medicine = TempData["medicine"] as List<MedicineListData>;
-            // string medicine = TempData["medicine"] as string;
-            if (medicine != null)
+            List<DoctorsListData> doctors = TempData["doctors"] as List<DoctorsListData>;
+            List<string> selectedSymptoms = TempData["selectedSymptoms"] as List<string>;
+
+
+            if (medicine != null && doctors != null)
             {
+                ViewBag.selectedSymptoms = selectedSymptoms;
                 ViewBag.medicine = medicine;
+                ViewBag.doctors = doctors;
             }
             return View();
         }
@@ -123,7 +130,9 @@ namespace symptomSage.Controllers
                 
                 if (searchForSymptoms.Status)
                 {
+                    TempData["selectedSymptoms"] = data.symptomIds;
                     TempData["medicine"] = searchForSymptoms.Medicine;
+                    TempData["doctors"] = searchForSymptoms.Doctors;
                     return RedirectToAction("SearchResult");
                 }
             }

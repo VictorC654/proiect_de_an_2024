@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using symptomSage.BusinessLogic.DBModel;
+using symptomSage.Domain.Entities.Doctors;
 using symptomSage.Domain.Entities.Medicine;
 using symptomSage.Domain.Entities.Symptoms;
 
@@ -98,12 +99,34 @@ namespace symptomSage.BusinessLogic.Core
                 {
                     Id = m.Id,
                     Name = m.Name,
+                    Desc = m.Desc,
                     Category = m.Category,
                     AddedDate = m.AddedDate
                 });
             }
             
-            return new SymptomsSearchResp() { 
+            List<DDbTable> doctors_result;
+            using (var db = new DoctorContext())
+            {
+                doctors_result = db.Doctors.Where(row => categories.Contains(row.Category)).ToList();
+            }
+            
+            var doctors = new List<DoctorsListData>();
+            
+            foreach (var m in doctors_result)
+            {
+                doctors.Add(new DoctorsListData()
+                {
+                    Id = m.Id,
+                    Name = m.Name,
+                    Desc = m.Desc,
+                    Category = m.Category,
+                });
+            }
+            
+            
+            return new SymptomsSearchResp() {
+                Doctors = doctors,
                 Medicine = medicines,
                 Status = true,                     
                 StatusMsg = "Success"

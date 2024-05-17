@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Doctors\DDbTable.cs" />
+    <Compile Include="Entities\Doctors\DoctorsListData.cs" />
     <Compile Include="Entities\Doctors\DRegisterData.cs" />
     <Compile Include="Entities\Doctors\DRegisterResp.cs" />
     <Compile Include="Entities\Medicine\MDbTable.cs" />
