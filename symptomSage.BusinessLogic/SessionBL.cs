@@ -41,6 +41,11 @@ namespace symptomSage.BusinessLogic
         {
             return UserCookie(apiCookieValue);
         }
+
+        public SymptomDeleteResp SymptomDelete(int symptomId)
+        {
+            return SymptomDeleteAction(symptomId);
+        }
         
         public SymptomsSearchResp SymptomSearch(SymptomsSearchReg data)
         {

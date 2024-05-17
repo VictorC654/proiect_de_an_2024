@@ -24,11 +24,11 @@
             <div class="col-lg-4">
 
                     
-                <p>
-                    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#simptomeGenerale" aria-expanded="false" aria-controls="collapseExample">
-                        Simptome generale
-                    </button>
-                </p>
+                @* <p> *@
+                @*     <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#simptomeGenerale" aria-expanded="false" aria-controls="collapseExample"> *@
+                @*         Simptome generale *@
+                @*     </button> *@
+                @* </p> *@
                 @Html.ValidationSummary(true)
                     @using (Html.BeginForm("SearchSymptom", "Symptoms", FormMethod.Post))
                     {
@@ -48,7 +48,7 @@
                             </div>
                         </div>
 
-                <button type="submit">Cauta</button>
+                <button class="btn btn-success" type="submit">Cauta</button>
                 }
             </div>
         </div>

@@ -101,7 +101,13 @@
                         <th>@symptom.Id</th>
                         <th>@symptom.Name</th>
                         <th>@symptom.Category</th>
-                        <th><button class="btn btn-danger">Delete</button></th>
+                        <th>
+                            @using (Html.BeginForm("DeleteSymptom", "Symptoms", FormMethod.Post))
+                            {
+                                <input type="hidden" value="@symptom.Id" name="symptomId">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            }
+                        </th>
                     </tr>
                 }
                 </tbody>

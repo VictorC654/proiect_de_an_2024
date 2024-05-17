@@ -108,6 +108,16 @@ namespace symptomSage.Controllers
             }
             return View();
         }
+
+        public ActionResult DeleteSymptom(int symptomId)
+        {
+            var deleteSymptom = _session.SymptomDelete(symptomId);
+            if (deleteSymptom.Status)
+            {
+                return RedirectToAction("SAdminPanel");
+            }
+            return RedirectToAction("SAdminPanel");
+        }
         
         [HttpPost]
         public ActionResult SearchSymptom(SymptomsData model)

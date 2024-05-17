@@ -41,6 +41,23 @@ namespace symptomSage.BusinessLogic.Core
                 Status = true
             };
         }
+
+        internal SymptomDeleteResp SymptomDeleteAction(int symptomId)
+        {
+            using (var db = new SymptomContext())
+            {
+                var symptomToBeDeleted= db.Symptoms.SingleOrDefault(b => b.Id == symptomId);
+                if (symptomToBeDeleted != null)
+                {
+                    db.Symptoms.Remove(symptomToBeDeleted);
+                    db.SaveChanges();
+                }
+            }
+            return new SymptomDeleteResp()
+            {
+                Status = true,
+            };
+        }
         internal SymptomsListResp SymptomListAction()
         {
             List<SDbTable> result;

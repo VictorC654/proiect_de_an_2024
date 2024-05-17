@@ -65,6 +65,7 @@
     <Compile Include="Entities\Symptoms\SDbTable.cs" />
     <Compile Include="Entities\Symptoms\SRegisterData.cs" />
     <Compile Include="Entities\Symptoms\SRegisterResp.cs" />
+    <Compile Include="Entities\Symptoms\SymptomDeleteResp.cs" />
     <Compile Include="Entities\Symptoms\SymptomSearchData.cs" />
     <Compile Include="Entities\Symptoms\SymptomsSearchReg.cs" />
     <Compile Include="Entities\Symptoms\SymptomsSearchResp.cs" />
