@@ -38,7 +38,7 @@
                 <!-- LOGO -->
                 <a class="logo text-uppercase" href="index.html">
                     <div class="logo-light" style="color:white;font-size:1.5em;font-weight:bold;"><i class="fa-regular fa-hospital mr-1 text-white"></i> symptomSage</div>
-                    <div class="logo-dark text-success" style="font-size:1.5em;font-weight:bold;"><i class="fa-regular fa-hospital mr-1 text-success"></i> symptomSage</div>
+                    <div class="logo-dark text-primary" style="font-size:1.5em;font-weight:bold;"><i class="fa-regular fa-hospital mr-1 text-primary"></i> symptomSage</div>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,14 +100,14 @@
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <div class="cta-content">
-                                    <h3 class="text-white mb-2">Best Solutions for your Business</h3>
-                                    <p class="text-white-50 mo-mb-20 mb-0">It is a long established fact that a reader will by of a page when looking at its layout.</p>
+                                    <h3 class="text-white mb-2">Cele mai bune diagnosticări</h3>
+                                    <p class="text-white-50 mo-mb-20 mb-0">Algoritmi sofisticați oferă o diagnostică precisă și modalități de recuperare a sănătății.</p>
 
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="text-md-right">
-                                    <a href="#" class="btn btn-purple">Get started now <i class="mdi mdi-arrow-right"></i> </a>
+                                    <a href="@Url.Action("select", "Symptoms")" class="btn btn-purple">Selectează simptome<i class="mdi mdi-arrow-right"></i> </a>
                                 </div>
                             </div>
                         </div>
@@ -123,29 +123,19 @@
                     <p class="text-white-50">If several languages coalesce the grammar of the resulting language </p>
                 </div>
                 <div class="col-lg-2">
-                    <h5 class="footer-title text-white mb-3">About</h5>
+                    <h5 class="footer-title text-white mb-3">Navigare</h5>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Features</a></li>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">FAQ</a></li>
+                        <li><a href="@Url.Action("Login", "Login")"><i class="fa-solid fa-user mr-1"></i>Logare</a></li>
+                        <li><a href="@Url.Action("select", "Symptoms")"><i class="fa-solid fa-arrow-pointer mr-1"></i>Caută simptome</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
                     <h5 class="footer-title text-white mb-3">Social</h5>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">Twitter</a></li>
-                        <li><a href="">Behance</a></li>
-                        <li><a href="">Dribbble</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h5 class="footer-title text-white mb-3">Support</h5>
-                    <ul class="list-unstyled footer-list">
-                        <li><a href="">Help & Support</a></li>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Terms & Conditions</a></li>
+                        <li><a href="https://github.com/VictorC654/proiect_de_an_2024"><i class="fa-solid fa-folder-open mr-1"></i>Proiect GitHub</a></li>
+                        <li><a href="https://github.com/VictorC654"><i class="fa-brands fa-github mr-1"></i>Calancea Victor</a></li>
+                        <li><a href="https://github.com/mariusbvl"><i class="fa-brands fa-github mr-1"></i>Marius Bivol</a></li>
+                        <li><a href="https://github.com/Wethermon"><i class="fa-brands fa-github mr-1"></i>Catana Daniel</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -154,19 +144,19 @@
                         <div class="float-left mr-2">
                             <i class="pe-7s-map-marker font-20"></i>
                         </div>
-                        <p class="text-white-50 overflow-hidden">2395 Point Street Chicago, IL 60639</p>
+                        <p class="text-white-50 overflow-hidden"><i class="fa-solid fa-location-dot mr-1 text-danger"></i>Strada Studenților 7, Chișinău</p>
                     </div>
                     <div>
                         <div class="float-left mr-2">
                             <i class="pe-7s-phone font-20"></i>
                         </div>
-                        <p class="text-white-50 overflow-hidden">(123) 456-7890</p>
+                        <p class="text-white-50 overflow-hidden"><i class="fa-solid fa-phone mr-1 text-success"></i>060244322</p>
                     </div>
                     <div>
                         <div class="float-left mr-2">
                             <i class="pe-7s-mail font-20"></i>
                         </div>
-                        <p class="text-white-50 overflow-hidden">example@abc.com</p>
+                        <p class="text-white-50 overflow-hidden"><i class="fa-solid fa-envelope mr-1 text-info"></i>symptomsage@mail.com</p>
                     </div>
                 </div>
             </div>
@@ -175,7 +165,7 @@
                 <div class="col-lg-12">
                     <div class="py-4">
                         <div class="text-center">
-                            <p class="text-white-50">2016 - 2019 © Minton. Design by <a href="" target="_blank" class="text-white-50">Coderthemes</a> </p>
+                            <p class="text-success">2024 © <b>symptomSage</b></p>
                         </div>
                     </div>
                 </div>

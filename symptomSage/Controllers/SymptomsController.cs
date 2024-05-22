@@ -96,7 +96,7 @@ namespace symptomSage.Controllers
         public ActionResult SearchResult()
         {
             List<MedicineListData> medicine = TempData["medicine"] as List<MedicineListData>;
-            List<DoctorsListData> doctors = TempData["doctors"] as List<DoctorsListData>;
+            List<DListData> doctors = TempData["doctors"] as List<DListData>;
             List<string> selectedSymptoms = TempData["selectedSymptoms"] as List<string>;
 
 

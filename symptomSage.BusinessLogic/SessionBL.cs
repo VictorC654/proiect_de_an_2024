@@ -19,6 +19,7 @@ namespace symptomSage.BusinessLogic
             return URegisterAction(data);
         }
 
+        
         public SRegisterResp SymptomRegister(SRegisterData data)
         {
             return SRegisterAction(data);
@@ -29,9 +30,19 @@ namespace symptomSage.BusinessLogic
             return MRegisterAction(data);
         }
 
+        public MedicineListResp MedicineList()
+        {
+            return MListAction();
+        }
+
         public DRegisterResp DoctorRegister(DRegisterData data)
         {
             return DRegisterAction(data);   
+        }
+
+        public DListResp DoctorList()
+        {
+            return DListAction();
         }
         public HttpCookie GenCookie(string loginCredential)
         {

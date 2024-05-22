@@ -2,7 +2,7 @@
 
 namespace symptomSage.Domain.Entities.Doctors
 {
-    public class DoctorsListData
+    public class DListData
     {
         public int Id { get; set; }
             

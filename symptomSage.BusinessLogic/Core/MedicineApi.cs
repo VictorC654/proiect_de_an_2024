@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using symptomSage.BusinessLogic.DBModel;
 using symptomSage.Domain.Entities.Medicine;
@@ -35,6 +36,39 @@ namespace symptomSage.BusinessLogic.Core
             return new MRegisterResp()
             {
                 Status = true
+            };
+        }
+
+        internal MedicineListResp MListAction()
+        {
+            List<MDbTable> result;
+            
+            using (var db = new MedicineContext())
+            {
+                result = db.Medicine.ToList();
+            }
+
+            var medicines = new List<MedicineListData>();
+            
+            foreach (var s in result)
+            {
+                medicines.Add(new MedicineListData()
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Desc = s.Desc,
+                    Category = s.Category,
+                    AddedDate = s.AddedDate
+                });
+            }
+
+            int nrOfMedicines = result.Count;
+            
+            return new MedicineListResp() { 
+                Medicines = medicines,
+                Status = true,                     
+                StatusMsg = "Success",
+                nrOfMedicines = nrOfMedicines,
             };
         }
         internal MedicineDetailsResp MDetailsAction(int medicineId)

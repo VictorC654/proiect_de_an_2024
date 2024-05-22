@@ -15,20 +15,15 @@ namespace symptomSage.BusinessLogic.Interfaces
     {
             ULoginResp UserLogin(ULoginData data);
             URegisterResp UserRegister(URegisterData data);
-
             HttpCookie GenCookie(string loginCredential);
             UserMinimal GetUserByCookie(string apiCookieValue);
-
             SRegisterResp SymptomRegister(SRegisterData data);
-
             SymptomDeleteResp SymptomDelete(int symptomId);
-
             SymptomsSearchResp SymptomSearch(SymptomsSearchReg data);
-            
             MRegisterResp MedicineRegister(MRegisterData data);
-
+            MedicineListResp MedicineList();
             DRegisterResp DoctorRegister(DRegisterData data);
-
+            DListResp DoctorList();
             SymptomsListResp SymptomsList(bool isAdmin);
             SymptomsDetailsResp SymptomDetails(int symptomId);
     }

@@ -6,10 +6,12 @@ namespace symptomSage.Domain.Entities.Medicine
 {
     public class MedicineListResp
     {
-        public List<MedicineListData> Medicine { get; set; }
+        public List<MedicineListData> Medicines { get; set; }
         
         public bool Status { get; set; }
         
         public string StatusMsg { get; set; }
+        
+        public int nrOfMedicines { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using symptomSage.BusinessLogic.DBModel;
 using symptomSage.Domain.Entities.Doctors;
 
@@ -33,6 +35,37 @@ namespace symptomSage.BusinessLogic.Core
             return new DRegisterResp()
             {
                 Status = true
+            };
+        }
+
+        internal DListResp DListAction()
+        {
+            List<DDbTable> result;
+            
+            using (var db = new DoctorContext())
+            {
+                result = db.Doctors.ToList();
+            }
+
+            var doctors = new List<DListData>();
+
+            foreach (var d in result)
+            {
+                doctors.Add(new DListData()
+                {
+                    Id = d.Id,
+                    Category = d.Category,
+                    Desc = d.Desc,
+                });
+            }
+
+            int nrOfDoctors = result.Count;
+            
+            return new DListResp() { 
+                Doctors = doctors,
+                Status = true,                     
+                StatusMsg = "Success",
+                nrOfDoctors = nrOfDoctors,
             };
         }
     }

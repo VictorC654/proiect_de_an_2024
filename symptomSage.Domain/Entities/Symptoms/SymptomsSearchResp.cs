@@ -8,7 +8,7 @@ namespace symptomSage.Domain.Entities.Symptoms
     {
         public List<MedicineListData> Medicine { get; set; }
         
-        public List<DoctorsListData> Doctors { get; set; }
+        public List<DListData> Doctors { get; set; }
         public bool Status { get; set; }
         public string StatusMsg { get; set; }
     }

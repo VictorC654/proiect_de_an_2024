@@ -128,11 +128,11 @@ namespace symptomSage.BusinessLogic.Core
                 doctors_result = db.Doctors.Where(row => categories.Contains(row.Category)).ToList();
             }
             
-            var doctors = new List<DoctorsListData>();
+            var doctors = new List<DListData>();
             
             foreach (var m in doctors_result)
             {
-                doctors.Add(new DoctorsListData()
+                doctors.Add(new DListData()
                 {
                     Id = m.Id,
                     Name = m.Name,
