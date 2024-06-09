@@ -1,0 +1,39 @@
+﻿@using System.Web.UI.WebControls
+@model symptomSage.Models.MedicineEdit
+
+@{
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditMedicineAction", "Medicine", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        <i style="font-size:1.5em;" class="fa-solid fa-stethoscope mr-1 text-danger"></i>
+                                        Editează un medicament
+                                    </h5>
+                                </div>
+                            <div class="modal-body">
+                                <div class="pl-1 pr-1" style="display:flex;flex-direction:column;align-items: center;justify-content: center;border-radius: 1em;">
+                                    <div class="mb-3" style="margin-top:-.1em;letter-spacing:.1em;font-size:.8em;">INTRODU NUMELE, CATEGORIA SI DESCRIEREA</div>
+                                    <div class="form-group border-danger">
+                                        <input type="hidden" value="@ViewBag.id" name="Id">
+                                        <input type="text" placeholder="Denumire" value="@ViewBag.medicine.Name" name="name" class="form-control mt-1">
+                                        <textarea style="width: 30em !important;height: 15em !important;" placeholder="Descriere" name="desc" class="form-control mt-1">
+                                            @ViewBag.medicine.Desc
+                                        </textarea>
+                                        @Html.ValidationMessageFor(model => model.Desc)
+                                        <input type="text" placeholder="Categorie" value="@ViewBag.medicine.Category" name="category" class="form-control mt-1">
+                                        @Html.ValidationMessageFor(model => model.Category)
+                                    </div>
+                                </div>
+                            </div>
+                                        <div class="modal-footer">
+                                            <button style="border-radius:.5em" type="submit" class="btn btn-warning">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }

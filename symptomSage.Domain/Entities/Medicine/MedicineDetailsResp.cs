@@ -4,6 +4,5 @@
     {
         public MedicineDetailsData Medicine { get; set; }
         public bool Status { get; set; }
-        public string StatusMsg { get; set; }
     }
 }

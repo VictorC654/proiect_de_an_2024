@@ -42,7 +42,31 @@ namespace symptomSage.Controllers
             return RedirectToAction("Index","Home");
         }
 
-
+        public ActionResult DoctorEdit(int doctorId)
+        {
+            var doctor = _session.DoctorDetails(doctorId);
+            ViewBag.doctor = doctor.Doctor;
+            ViewBag.id = doctorId;
+            return View("EditDoctor");
+        }
+        public ActionResult DoctorEditAction(DoctorEdit data)
+        {
+            DEditData doctor = new DEditData()
+            {
+                id = data.id,
+                Name = data.Name,
+                Desc = data.Desc,
+                Category = data.Category
+            };
+            var doctorEdit = _session.DoctorEdit(doctor);
+            if (doctorEdit.status)
+            {
+                return RedirectToAction("DAdminPanel");
+            }
+            return RedirectToAction("DAdminPanel");
+        }
+        
+        
         [HttpPost]
         [Route("registerdoctor")]
         public ActionResult RegisterDoctor(DoctorRegister doctor)

@@ -45,8 +45,35 @@ namespace symptomSage.Controllers
             }
             return RedirectToAction("Index","Home");
         }
-
-
+        
+        [HttpPost]
+        public ActionResult EditMedicineAction(MedicineEdit medicine)
+        {
+            MEditData data = new MEditData()
+            {
+                id = medicine.Id,
+                Name = medicine.Name,
+                Desc = medicine.Desc,
+                Category = medicine.Category
+            };
+            var medicineEdit = _session.MedicineEdit(data);
+            if (medicineEdit.status)
+            {
+                return RedirectToAction("MAdminPanel", "Medicine");
+            }
+            return RedirectToAction("MAdminPanel");
+        }
+        
+        
+        [Route("editmedicine")]
+        public ActionResult EditMedicine(int medicineId)
+        {
+                var medicine = _session.MedicineDetails(medicineId);
+                int Id = medicineId;
+                ViewBag.medicine = medicine.Medicine;
+                ViewBag.id = Id;
+                return View("EditMedicine");
+        }
         [HttpPost]
         [Route("registermedicine")]
         public ActionResult RegisterMedicine(MedicineRegister medicine)
@@ -82,6 +109,7 @@ namespace symptomSage.Controllers
             }
             return RedirectToAction("MAdminPanel");
         }
-        
+
+
     }
 }

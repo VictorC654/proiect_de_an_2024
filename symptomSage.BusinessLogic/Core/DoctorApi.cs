@@ -85,5 +85,49 @@ namespace symptomSage.BusinessLogic.Core
                 status = true,
             };
         }
+        internal DDetailsResp DDetailsAction(int doctorId)
+        {
+            DDbTable result;
+            
+            using (var db = new DoctorContext())
+            {
+                result = db.Doctors.FirstOrDefault(b => b.Id == doctorId);
+            }
+            
+            var doctor = new DDetailsData()
+            {
+                id = result.Id,
+                Name = result.Name,
+                Desc = result.Desc,
+                Category = result.Category,
+            };
+            
+            
+            return new DDetailsResp() { 
+                Doctor = doctor,
+                status = true,                     
+            };
+        }
+
+        internal DEditResp DEditAction(DEditData data)
+        {
+            DDbTable result;
+            int doctorId = data.id;
+            using (var db = new DoctorContext())
+            {
+                result = db.Doctors.FirstOrDefault(b => b.Id == doctorId);
+                if (result != null)
+                {
+                    result.Name = data.Name;
+                    result.Desc = data.Desc;
+                    result.Category = data.Category;
+                    db.SaveChanges();
+                }
+            }
+            return new DEditResp()
+            {
+                status = true,
+            };
+        }
     }
 }

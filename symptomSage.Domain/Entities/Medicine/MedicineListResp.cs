@@ -10,8 +10,6 @@ namespace symptomSage.Domain.Entities.Medicine
         
         public bool Status { get; set; }
         
-        public string StatusMsg { get; set; }
-        
         public string Desc { get; set; }
         
         public int nrOfMedicines { get; set; }

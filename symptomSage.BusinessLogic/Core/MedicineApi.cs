@@ -50,17 +50,14 @@ namespace symptomSage.BusinessLogic.Core
             }
 
             var medicines = new List<MedicineListData>();
-            string GetFirstTenCharacters(string s)
-            {
-                return (s.Length < 20) ? s : s.Substring(0, 20);
-            }
+            
             foreach (var s in result)
             {
                 medicines.Add(new MedicineListData()
                 {
                     Id = s.Id,
                     Name = s.Name,
-                    Desc = GetFirstTenCharacters(s.Desc),
+                    Desc = s.Desc,
                     Category = s.Category,
                     imagePath = s.imagePath,
                     AddedDate = s.AddedDate
@@ -72,34 +69,33 @@ namespace symptomSage.BusinessLogic.Core
             return new MedicineListResp() { 
                 Medicines = medicines,
                 Status = true,                     
-                StatusMsg = "Success",
                 nrOfMedicines = nrOfMedicines,
             };
         }
-        internal MedicineDetailsResp MDetailsAction(int medicineId)
-        {
-            MDbTable result;
-
-            using (var db = new MedicineContext())
-            {
-                result = db.Medicine.FirstOrDefault(b => b.Id == medicineId);
-            }
-            
-            var medicine = new MedicineDetailsData()
-            {
-                Id = result.Id,
-                Name = result.Name,
-                Desc = result.Desc,
-                Category = result.Category,
-                imagePath = result.imagePath,
-                AddedDate = result.AddedDate,
-            };
-            return new MedicineDetailsResp() { 
-                Medicine = medicine,
-                Status = true,                     
-                StatusMsg = "Success"
-            };
-        }
+        // internal MedicineDetailsResp MDetailsAction(int medicineId)
+        // {
+        //     MDbTable result;
+        //
+        //     using (var db = new MedicineContext())
+        //     {
+        //         result = db.Medicine.FirstOrDefault(b => b.Id == medicineId);
+        //     }
+        //     
+        //     var medicine = new MedicineDetailsData()
+        //     {
+        //         Id = result.Id,
+        //         Name = result.Name,
+        //         Desc = result.Desc,
+        //         Category = result.Category,
+        //         imagePath = result.imagePath,
+        //         AddedDate = result.AddedDate,
+        //     };
+        //     return new MedicineDetailsResp() { 
+        //         Medicine = medicine,
+        //         Status = true,                     
+        //         StatusMsg = "Success"
+        //     };
+        // }
         internal MDeleteResp MDeleteAction(int medicineId)
         {
             using (var db = new MedicineContext())
@@ -112,6 +108,48 @@ namespace symptomSage.BusinessLogic.Core
                 }
             }
             return new MDeleteResp()
+            {
+                status = true,
+            };
+        }
+
+        internal MedicineDetailsResp MedicineDetailsAction(int medicineId)
+        {
+            MDbTable result;
+            using (var db = new MedicineContext())
+            {
+                result = db.Medicine.FirstOrDefault(b => b.Id == medicineId);
+            }
+
+            var medicineToBeEdited = new MedicineDetailsData()
+            {
+                Name = result.Name,
+                Desc = result.Desc,
+                Category = result.Category,
+            };
+            return new MedicineDetailsResp()
+            {
+                Medicine = medicineToBeEdited,
+                Status = true,
+            };
+        }
+
+        internal MEditResp MedicineEditAction(MEditData data)
+        {
+            MDbTable result;
+            int medicineId = data.id;
+            using (var db = new MedicineContext())
+            {
+                result = db.Medicine.FirstOrDefault(b => b.Id == medicineId);
+                if (result != null)
+                {
+                    result.Name = data.Name;
+                    result.Desc = data.Desc;
+                    result.Category = data.Category;
+                    db.SaveChanges();
+                }
+            }
+            return new MEditResp()
             {
                 status = true,
             };

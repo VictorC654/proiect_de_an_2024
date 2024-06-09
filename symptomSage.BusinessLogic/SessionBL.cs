@@ -49,10 +49,18 @@ namespace symptomSage.BusinessLogic
         {
             return DListAction();
         }
-
+        public DEditResp DoctorEdit(DEditData data)
+        {
+            return DEditAction(data);
+        }
         public DDeleteResp DeleteDoctor(int doctorId)
         {
             return DDeleteAction(doctorId);
+        }
+
+        public DDetailsResp DoctorDetails(int id)
+        {
+            return DDetailsAction(id);
         }
         public HttpCookie GenCookie(string loginCredential)
         {
@@ -71,6 +79,16 @@ namespace symptomSage.BusinessLogic
         public SymptomsSearchResp SymptomSearch(SymptomsSearchReg data)
         {
             return SSearchData(data);
+        }
+
+        public MedicineDetailsResp MedicineDetails(int id)
+        {
+            return MedicineDetailsAction(id);
+        }
+
+        public MEditResp MedicineEdit(MEditData data)
+        {
+            return MedicineEditAction(data);
         }
         public SymptomsListResp SymptomsList(bool isAdmin)
         {

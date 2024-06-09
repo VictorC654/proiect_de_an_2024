@@ -154,7 +154,6 @@ namespace symptomSage.BusinessLogic.Core
         internal SymptomsDetailsResp SymptomDetailsAction(int symptomId)
         {
             SDbTable result;
-            SDbTable categories;
             
             using (var db = new SymptomContext())
             {

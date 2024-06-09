@@ -78,11 +78,11 @@
                         <th>@doctor.Desc</th>
                         <th>
                             <div style="display:flex;">
-                            @using (Html.BeginForm("DeleteDoctor", "Doctors", FormMethod.Post))
-                            {
-                                <input type="hidden" value="@doctor.Id" name="symptomId">
-                                <button type="submit" class="btn btn-warning mr-2">Edit</button>
-                            }
+                                @using (Html.BeginForm("DoctorEdit", "Doctors", FormMethod.Post))
+                                {
+                                    <input type="hidden" value="@doctor.Id" name="doctorId">
+                                    <button type="submit" class="btn btn-warning">Edit</button>
+                                }
                             @using (Html.BeginForm("DeleteDoctor", "Doctors", FormMethod.Post))
                             {
                                 <input type="hidden" value="@doctor.Id" name="doctorId">
