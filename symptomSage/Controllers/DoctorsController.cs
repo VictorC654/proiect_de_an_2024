@@ -21,10 +21,23 @@ namespace symptomSage.Controllers
         [Route("dadminpanel")]
         public ActionResult DAdminPanel()
         {
-            var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
-            if (checkUser)
+            if (System.Web.HttpContext.Current.GetMySessionObject() != null)
             {
-                return View();
+                var user = System.Web.HttpContext.Current.GetMySessionObject();
+                if (user.Level == URole.Admin || user.Level == URole.Moderator)
+                {
+                    var doctorList = _session.DoctorList();
+
+                    UserData userData = new UserData()
+                    {
+                        Username = user.Username,
+                        Level = user.Level,
+                    };
+                    ViewBag.user = userData.Username;
+                    ViewBag.doctorList = doctorList.Doctors;
+                    ViewBag.nrOfDoctors = doctorList.nrOfDoctors;
+                    return View();
+                }
             }
             return RedirectToAction("Index","Home");
         }
@@ -49,6 +62,15 @@ namespace symptomSage.Controllers
                 }
             }
             return RedirectToAction("DAdminPanel", "Doctors");
+        }
+        public ActionResult DeleteDoctor(int doctorId)
+        {
+            var deleteDoctor = _session.DeleteDoctor(doctorId);
+            if (deleteDoctor.status)
+            {
+                return RedirectToAction("DAdminPanel");
+            }
+            return RedirectToAction("DAdminPanel");
         }
     }
 }

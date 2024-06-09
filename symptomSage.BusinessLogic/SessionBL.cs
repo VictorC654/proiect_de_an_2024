@@ -35,6 +35,11 @@ namespace symptomSage.BusinessLogic
             return MListAction();
         }
 
+        public MDeleteResp MedicineDelete(int medicineId)
+        {
+            return MDeleteAction(medicineId);
+        }
+
         public DRegisterResp DoctorRegister(DRegisterData data)
         {
             return DRegisterAction(data);   
@@ -43,6 +48,11 @@ namespace symptomSage.BusinessLogic
         public DListResp DoctorList()
         {
             return DListAction();
+        }
+
+        public DDeleteResp DeleteDoctor(int doctorId)
+        {
+            return DDeleteAction(doctorId);
         }
         public HttpCookie GenCookie(string loginCredential)
         {

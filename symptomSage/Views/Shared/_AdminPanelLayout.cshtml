@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script src="https://kit.fontawesome.com/b39e74830d.js" crossorigin="anonymous"></script>
+
+    @Styles.Render("~/Content/admindash/admindash.css")
+    
+    @* @Styles.Render("~/Content/templateCss/style.css.map") *@
+    
+    @Styles.Render("~/Content/templateCss/bootstrap.min.css")
+
+</head>
+<body>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" class="bg-primary">
+        <div class="sidebar-header bg-primary text-white" style="color:white;">
+            <div style="display:flex;flex-direction: row;justify-content: center;">
+                <h4 class="text-white" style="font-weight: bold;"><i class="fa-regular fa-hospital"></i> SYMPTOMSAGE</h4>
+            </div>
+            <div style="display:flex;justify-content: center;margin-top:-.5em;letter-spacing:.1em;">
+                ADMIN PANEL
+            </div>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="@Url.Action("SAdminPanel", "Symptoms")" class="text-white"><i style="margin-right:5px;" class="fa-solid fa-stethoscope mr-2"></i>Simptome</a>
+            </li>
+            <li>
+            <a href="@Url.Action("MAdminPanel", "Medicine")" class="text-white"><i style="margin-right:5px;" class="fa-solid fa-pills mr-2"></i>Medicamente</a>
+            <li>
+                <a href="@Url.Action("DAdminPanel", "Doctors")" class="text-white"><i style="margin-right:5px;" class="fa-solid fa-user-doctor mr-2"></i> Medici</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="@Url.Action("Index", "Home")" class="article">Pagina principala</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        @RenderBody()
+    </div>
+</div>
+
+
+    @Scripts.Render("~/Scripts/jquery-3.7.1.js")
+    @Scripts.Render("~/Scripts/templateScripts/bootstrap.bundle.min.js")
+    @Scripts.Render("~/Scripts/templateScripts/jquery.easing.min.js")
+    @Scripts.Render("~/Scripts/templateScripts/app.js")
+    <script>
+            $(document).ready(function () {
+                $("#sidebar").find('[href="' + window.location.pathname + '"]').parent().addClass('active');
+            });
+    
+    </script>
+</body>
+</html>

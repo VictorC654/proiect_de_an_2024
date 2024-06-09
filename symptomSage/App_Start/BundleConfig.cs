@@ -22,12 +22,15 @@ namespace symptomSage
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            // bundles.Add(new StyleBundle("~/Content/css").Include(
+            //           "~/Content/bootstrap.css",
+            //           "~/Content/site.css"));
 
 
-
+            bundles.Add(new StyleBundle("~/Content/admindash").Include(
+                "~/Content/templateCss/admindash.css",
+                "~/Content/templateCss/bootstrap.min.css"
+                ));
             bundles.Add(new StyleBundle("~/Content/templateCSS").Include(
                 "~/Content/templateCss/style.css",
                 "~/Content/templateCss/style.css.map",

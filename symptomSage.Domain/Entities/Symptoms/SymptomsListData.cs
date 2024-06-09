@@ -10,6 +10,8 @@ namespace symptomSage.Domain.Entities.Symptoms
         
             public string Category { get; set; }
             
+            public string imagePath { get; set; }
+            
             public Nullable<DateTime> AddedDate { get; set; }
     }
 }

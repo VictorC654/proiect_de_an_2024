@@ -117,6 +117,7 @@ namespace symptomSage.BusinessLogic.Core
                     Id = m.Id,
                     Name = m.Name,
                     Desc = m.Desc,
+                    imagePath = m.imagePath,
                     Category = m.Category,
                     AddedDate = m.AddedDate
                 });

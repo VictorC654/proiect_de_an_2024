@@ -1,57 +1,232 @@
 ﻿@using System.Web.UI.HtmlControls
 @using symptomSage.Models
 @model symptomSage.Models.SymptomsData
+<style>
 
-<section class="page-header-box bg-success">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-left">
-                    <h3 class="page-header-title text-white" style="font-size:2em;">Avem disponibile o gama larga de simptome</h3>
-                </div>
-                <div class="text-right">
-                    <div class="">
-                        <img src="../../Images/pic3.png" alt="" width="250" class="">
-                    </div>
-                </div>
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  }
+/* The container */
+.symptomContainer {
+  display: block;
+  position: relative;
+  /*padding-left: 35px;*/
+  padding: 1em;
+  margin-bottom: 12px;
+  background-color:rgb(220,220,220);
+  cursor: pointer;
+  font-size: 1em;
+  width: 15em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: .5s all ease;
+}
+
+.symptomContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius:10px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.symptomContainer:hover  {
+  background-color: #87CEFA;
+  transition: .5s all ease;
+}
+
+.symptomContainer:has(> input:checked)
+{
+    transition: .5s all ease;
+    background-color:#87CEFA !important;
+    color: white;
+}
+
+#searchBar
+{
+    padding:1.5em;
+    border: black;
+    margin-bottom: .2em;
+    height: 3em;
+    z-index:1;
+    width: 30em;   
+    transition: 2s all ease;
+}
+
+.selectedSymptom
+{
+    background-color:transparent;
+    border: 2px solid #87CEFA;
+    border-radius: 2em;
+    padding: 1em;
+    font-weight: bold;
+    font-size: .9em;
+    margin-top: -1.5em;
+    margin-bottom: 1em;
+    margin-left: .5em;
+    transition: 1s all ease;
+    cursor:pointer;
+}
+
+.selectedSymptom i
+{
+    color: #87CEFA;
+    transition: 1s all ease;
+}
+
+.selectedSymptom:hover i
+{
+    transition: 1s all ease;
+    color: red;
+}
+
+.selectedSymptom:hover
+{
+    transition: 1s all ease;
+    background-color:white;
+}
+
+
+.notSelectedSymptom
+{
+    background-color:transparent;
+    padding: 1em;
+    font-weight: bold;
+    font-size: .9em;
+    margin-top: -1.5em;
+    margin-bottom: 1em;
+    margin-left: .5em;
+}
+
+
+/*#searchBar:focus*/
+/*{*/
+/*   width: 30em; */
+/*   transition: 2s all ease;*/
+/*}*/
+
+</style>
+<section class="page-header-box bg-primary">
+    <div style="display:flex;flex-direction: row;justify-content: center;">
+        <div style="width:35%;display:flex;flex-direction: column;margin-left:15em;border-right: 2px solid white;padding: 1.5em;">
+            <div style="font-size:4em;font-weight: bold;"><i class="fa-solid fa-magnifying-glass mr-2"></i>Alege simptome</div>
+            <div style="font-weight:bold;font-size:1em;margin-left: .1em;margin-top: -.8em;font-style: italic;">
+                Rapid, precis și convenabil - află starea sănătății tale din confortul casei!
+            </div>  
+            <div class="text-light" style="font-size:1em;margin-left:.1em;margin-top: .5em;">
+                îți oferim acces la servicii medicale de top, fără a fi nevoie să te deplasezi la un cabinet.
+                Indiferent de problemă, suntem aici pentru a te ajuta să îți menții sănătatea și bunăstarea.
+                Fii sigur că primești îngrijirea de care ai nevoie, exact atunci când ai nevoie!
             </div>
-        </div> <!--end row-->
-    </div> <!--end container-->
+        </div>
+        <div style="width:60%;display: flex;flex-direction: row;">
+            <img src="../../Images/search.png" alt="" style="left:0;" width="200" class="img-fluid mx-auto d-block">
+        </div>
+    </div>
 </section>
 <section class="section">
-    <div class="container-fluid">
-        <div class="col" align="">
-            <div class="col-lg-4">
-
-                    
-                @* <p> *@
-                @*     <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#simptomeGenerale" aria-expanded="false" aria-controls="collapseExample"> *@
-                @*         Simptome generale *@
-                @*     </button> *@
-                @* </p> *@
-                @Html.ValidationSummary(true)
-                    @using (Html.BeginForm("SearchSymptom", "Symptoms", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="" id="simptomeGenerale">
-                            <div class="card card-body">
-                
-                                @foreach (var symptom in ViewBag.symptomsList)
-                                {
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="selectedSymptoms" value="@symptom.Name">
-                                        <label class="form-check-label">
-                                            @symptom.Name
-                                        </label>
-                                    </div>
-                                }
-                            </div>
+            @Html.ValidationSummary(true)
+            @using (Html.BeginForm("SearchSymptom", "Symptoms", FormMethod.Post))
+            {
+                <div class="container-fluid">
+                    <div style="display:flex;justify-content: center;">
+                        <input type="text" id="searchBar" placeholder="Cauta simptome...">
+                        <button style="margin-bottom:2em;height:3em;margin-left: -.1em;" class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass mr-1"></i>Caută</button>
+                    </div>
+                    <div style="display:flex;justify-content: center;" id="result">
+                        <div class="notSelectedSymptom">Nu a fost selectat nici un simptom.</div>
+                    </div>
+                    @Html.AntiForgeryToken()
+                    <div class="" id="simptomeGenerale">
+                        <div class="bg-white p-3" style="max-height:35em;width: 100%;display:flex;flex-wrap: wrap;gap: 1px;">
+                            @foreach (var symptom in ViewBag.symptomsList)
+                            {
+                                <div style="">
+                                    <label class="symptomContainer mr-3 bg-light" id="@symptom.Name">@symptom.Name
+                                        <input class="" type="checkbox" name="selectedSymptoms" value="@symptom.Name">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            }
                         </div>
-
-                <button class="btn btn-success" type="submit">Cauta</button>
-                }
-            </div>
-        </div>
-        </div>
+                    </div>
+                </div>
+            }
 </section>
+<script>
+        const searchBar = document.getElementById('searchBar');
+        const labels = document.querySelectorAll('label');
+        
+        searchBar.addEventListener('input', () => {
+            const searchText = searchBar.value.toLowerCase();
+            labels.forEach(label => {
+                if (searchText === '' || label.id.toLowerCase().includes(searchText)) {
+                    label.style.display = 'block';
+                } else {
+                    label.style.display = 'none';
+                }
+            });
+        });
+        
+        function displaySelectedLabels() {
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = '';
+                    const selectedLabels = [];
+                    checkboxes.forEach((checkbox) => {
+                        if (checkbox.checked) {
+                            resultDiv.classList.remove('notSelectedSymptom');
+                            selectedLabels.push(checkbox.value);
+                            const labelElement = document.createElement('div');
+                            
+                            labelElement.textContent = checkbox.value ;
+                            labelElement.classList.add('selectedSymptom');
+                            resultDiv.appendChild(labelElement).innerHTML += `<i class="fa-regular text-success fa-circle-check ml-1"></i>`;
+                        }
+                    });
+                    // Display a message if no labels are selected
+                    if (selectedLabels.length === 0) {
+                        resultDiv.classList.add('notSelectedSymptom');
+                        resultDiv.textContent = 'Nu a fost selectat nici un simptom.';
+                    }
+                }
+                document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+                            checkbox.addEventListener('change', displaySelectedLabels);
+                        });
+             displaySelectedLabels();
+    </script>
 

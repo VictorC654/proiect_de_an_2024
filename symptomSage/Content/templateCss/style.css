@@ -4,6 +4,8 @@ Author: CoderThemes
 Email: coderthemes@gmail.com
 File: Main scss file
 */
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 /*******************
     1.General
@@ -20,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 a {

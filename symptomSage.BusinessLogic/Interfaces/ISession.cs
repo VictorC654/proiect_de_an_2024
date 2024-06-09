@@ -22,8 +22,10 @@ namespace symptomSage.BusinessLogic.Interfaces
             SymptomsSearchResp SymptomSearch(SymptomsSearchReg data);
             MRegisterResp MedicineRegister(MRegisterData data);
             MedicineListResp MedicineList();
+            MDeleteResp MedicineDelete(int medicineId);
             DRegisterResp DoctorRegister(DRegisterData data);
             DListResp DoctorList();
+            DDeleteResp DeleteDoctor(int doctorId);
             SymptomsListResp SymptomsList(bool isAdmin);
             SymptomsDetailsResp SymptomDetails(int symptomId);
     }

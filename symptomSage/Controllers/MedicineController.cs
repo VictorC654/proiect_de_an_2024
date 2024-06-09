@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 using symptomSage.BusinessLogic.Interfaces;
 using symptomSage.Domain.Entities.Medicine;
@@ -23,10 +25,23 @@ namespace symptomSage.Controllers
         [Route("madminpanel")]
         public ActionResult MAdminPanel()
         {
-            var checkUser = System.Web.HttpContext.Current.GetMySessionObject() != null && System.Web.HttpContext.Current.GetMySessionObject().Level == URole.Admin;
-            if (checkUser)
+            if (System.Web.HttpContext.Current.GetMySessionObject() != null)
             {
-                return View();
+                var user = System.Web.HttpContext.Current.GetMySessionObject();
+                if (user.Level == URole.Admin || user.Level == URole.Moderator)
+                {
+                    var medicineList = _session.MedicineList();
+
+                    UserData userData = new UserData()
+                    {
+                        Username = user.Username,
+                        Level = user.Level,
+                    };
+                    ViewBag.user = userData.Username;
+                    ViewBag.medicineList = medicineList.Medicines;
+                    ViewBag.nrOfMedicines = medicineList.nrOfMedicines;
+                    return View();
+                }
             }
             return RedirectToAction("Index","Home");
         }
@@ -36,13 +51,19 @@ namespace symptomSage.Controllers
         [Route("registermedicine")]
         public ActionResult RegisterMedicine(MedicineRegister medicine)
         {
+            
             if (ModelState.IsValid)
             {
+                string image = Path.Combine(Server.MapPath("~/Images"),
+                Path.GetFileName(medicine.Image.FileName));
+                medicine.Image.SaveAs(image);
+                string imagePath = "~/Images/" + medicine.Image.FileName;
                 MRegisterData data = new MRegisterData()
                 {
                     Name = medicine.Name,
                     Desc = medicine.Desc,
                     Category = medicine.Category,
+                    imagePath = imagePath,
                 };
                 var medicineRegister = _session.MedicineRegister(data);
                 if (medicineRegister.Status)
@@ -52,5 +73,15 @@ namespace symptomSage.Controllers
             }
             return RedirectToAction("MAdminPanel", "Medicine");
         }
+        public ActionResult DeleteMedicine(int medicineId)
+        {
+            var deleteMedicine = _session.MedicineDelete(medicineId);
+            if (deleteMedicine.status)
+            {
+                return RedirectToAction("MAdminPanel");
+            }
+            return RedirectToAction("MAdminPanel");
+        }
+        
     }
 }

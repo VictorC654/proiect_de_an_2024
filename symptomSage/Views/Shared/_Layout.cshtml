@@ -11,10 +11,6 @@
     <meta content="" name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
-
-
     @Styles.Render("~/Content/templateCSS")
     
     
@@ -23,8 +19,14 @@
         @RenderSection("Styles", required: false)
     }
     <link href="~/website2.ico" rel="shortcut icon" type="image/x-icon" />
+<link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    
     <script src="https://kit.fontawesome.com/b39e74830d.js" crossorigin="anonymous"></script>
-
+    <style>
+    body {
+        font-family: 'Varela Round';
+    }
+    </style>
 </head>
 
 <body>
@@ -61,7 +63,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="@Url.Action("SAdminPanel", "Symptoms")">
                                         <i class="fa-solid fa-screwdriver-wrench"></i>
-                                        Symptoms Admin Panel
+                                        Admin Panel
                                     </a>
                                 </li>
                             }
@@ -119,8 +121,8 @@
                     <div class="mb-3">
                         <img src="images/logo-light.png" alt="" height="20">
                     </div>
-                    <p class="pt-1 text-white-50">Bootstrap 4 Landing Page Template</p>
-                    <p class="text-white-50">If several languages coalesce the grammar of the resulting language </p>
+                    @* <p class="pt-1 text-white-50">Bootstrap 4 Landing Page Template</p> *@
+                    @* <p class="text-white-50">If several languages coalesce the grammar of the resulting language </p> *@
                 </div>
                 <div class="col-lg-2">
                     <h5 class="footer-title text-white mb-3">Navigare</h5>

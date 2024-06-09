@@ -11,5 +11,7 @@ namespace symptomSage.Domain.Entities.Medicine
         
         public string Category { get; set; }
         public Nullable<DateTime> AddedDate { get; set; }
+        
+        public string imagePath { get; set; }
     }
 }

@@ -1,4 +1,13 @@
 ﻿/* Set padding to keep content from hitting the edges */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+html body {
+    font-family: 'Poppins', sans-serif;
+    font-size:medium;
+}
+
 .body-content {
     margin-top: 15px;
     padding-left: 15px;

@@ -54,6 +54,7 @@ namespace symptomSage.BusinessLogic.Core
                 doctors.Add(new DListData()
                 {
                     Id = d.Id,
+                    Name = d.Name,
                     Category = d.Category,
                     Desc = d.Desc,
                 });
@@ -66,6 +67,22 @@ namespace symptomSage.BusinessLogic.Core
                 Status = true,                     
                 StatusMsg = "Success",
                 nrOfDoctors = nrOfDoctors,
+            };
+        }
+        internal DDeleteResp DDeleteAction(int doctorId)
+        {
+            using (var db = new DoctorContext())
+            {
+                var doctorToBeDeleted= db.Doctors.SingleOrDefault(b => b.Id == doctorId);
+                if (doctorToBeDeleted != null)
+                {
+                    db.Doctors.Remove(doctorToBeDeleted);
+                    db.SaveChanges();
+                }
+            }
+            return new DDeleteResp()
+            {
+                status = true,
             };
         }
     }

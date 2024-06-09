@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace symptomSage.Models
 {
@@ -18,5 +19,7 @@ namespace symptomSage.Models
         [Display(Name = "Category")]
         [StringLength(90)]
         public string Category { get; set; }
+        
+        public HttpPostedFileBase  Image { get; set; }
     }
 }
